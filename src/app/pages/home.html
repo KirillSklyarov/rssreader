@@ -1,0 +1,13 @@
+<h1>{{title}}</h1>
+<h1>List of rss channels</h1>
+<div>
+  <input type="text" [(ngModel)]="channel" />
+  <input type="button" name="Add channel"/>
+</div>
+<div [ngClass]="{invisible:isListEmpty()}">
+  <p>List is empty</p>
+</div>
+
+<div>
+
+</div>
