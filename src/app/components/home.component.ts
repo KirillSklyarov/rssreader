@@ -11,22 +11,34 @@ import { Channel } from './../rss/channel'
 })
 export class HomeComponent implements OnInit {
 
-  //feed = require('rss-to-json')
   channels: Channel[] = []
-  channel: string = 'assets/news.rss'
+  channelsUrl: string[] = ['assets/news.rss']
 
   constructor (private httpService: HttpService) { }
 
   ngOnInit () {
-    this.httpService.getData(this.channel).subscribe((data: Response) => {
-      console.log(data)
-    })
-  }
+    for (let i = 0; i < this.channelsUrl.length; i++) {
+      this.httpService.getData(this.channelsUrl[i]).
+      subscribe((data: Response) => {
 
-  addChannel () {
-    this.httpService.getData(this.channel).subscribe((data: Response) => {
-      console.log(data.toLocaleString)
-    })
+        // Parse XML to object Channel
+        let parseString = require('xml2js').parseString;
+        let xml = data['_body']
+
+        parseString(xml, function (err, result) {
+          console.log(result.rss.channel[0])
+          for (let i = 0; i < result.rss.channel.length; i++){
+            let chan = result.rss.channel[i]
+            let channel = Channel
+            for (let prop in chan) {
+              if (prop == 'pubDate' || prop == 'lastBuildDate') {
+                channel[prop] = new Date(chan[prop])
+              }
+            }
+          }
+        })
+      })
+    }
   }
 
   isListEmpty (): boolean {
