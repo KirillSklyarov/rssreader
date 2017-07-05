@@ -3,17 +3,16 @@ import { Image } from './image'
 import { TextInput } from './textinput'
 
 export class Channel {
-  // Required channel elements
   title: string
   link: string
   description: string
-
-  // Optional channel elements
+  items: Item[]
   language: string
   copyright: string
   managingEditor: string
   webMaster: string
   pubDate: string
+  isoDate: string
   lastBuildDate: string
   category: string
   generator: string

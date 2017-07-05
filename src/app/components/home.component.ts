@@ -1,7 +1,11 @@
 import { Component, OnInit } from '@angular/core'
 import { Response } from '@angular/http'
 import { HttpService } from './../services/http.service'
+
 import { Channel } from './../rss/channel'
+import { Item } from './../rss/item'
+import { Image } from './../rss/image'
+import { TextInput } from './../rss/textinput'
 
 @Component({
   selector: 'home-app',
@@ -17,14 +21,38 @@ export class HomeComponent implements OnInit {
   constructor (private httpService: HttpService) { }
 
   ngOnInit () {
-    
-    let parser = require('rss-parser');
 
-    parser.parseURL(this.channelsUrl[0], function(err, parsed) {
-      console.log(parsed.feed);
-      parsed.feed.entries.forEach(function(entry) {
-        console.log(entry.title + ':' + entry.link);
+    let parser = require('rss-parser');
+    let channel: Channel
+    let item: Item
+
+    // Pasre RSS
+
+    this.channelsUrl.forEach(chanUrl => {
+
+      parser.parseURL(this.channelsUrl[0], function(err, parsed) {
+        console.log(parsed.feed)
+
+        channel = new Channel()
+        // channel.items = parsed.feed[]
+        // for (let keyChannel in parsed.feed) {
+        //   if (keyChannel == 'entries') {
+            channel.items = []
+            parsed.feed['entries'].forEach(entry => {
+              item = new Item()
+              for (let keyEntry in entry) {
+                item[keyEntry] = entry[keyEntry]
+              }
+              channel.items.push(item)
+            })
+            // console.log(channel.items)
+          // } 
+        }
       })
+
+    })
+    this.channels.forEach(channel => {
+      console.log(channel)
     })
   }
 
