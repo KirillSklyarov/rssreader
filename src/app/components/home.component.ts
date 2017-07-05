@@ -16,29 +16,28 @@ import { TextInput } from './../rss/textinput'
 export class HomeComponent implements OnInit {
 
   channels: Channel[] = []
-  channelsUrl: string[] = ['assets/news.rss']
+  channelUrls: string[] = ['assets/rbcnews.rss',
+    'assets/kommersantnews.xml']
 
   constructor (private httpService: HttpService) { }
 
   ngOnInit () {
-    var FeedMe = require('feedme');
-    var http = require('http');
 
-    http.get(this.channelsUrl[0], function(res) {
-      var parser = new FeedMe(true);
-      res.pipe(parser);
-      parser.on('end', function() {
-        let jsonRss = parser.done()
+    let homeComponent = this
 
-        console.log(jsonRss)
+    this.channelUrls.forEach((url, index) => {
+      this.httpService.getData(this.channelUrls[index]).
+        subscribe((data: Response) => {
+          let rssXml = data.text()
+          let parseString = require('xml2js').parseString;
 
-        this.channels = []
+          parseString(rssXml, function (err, result) {
+            console.log(result);
+            console.log(homeComponent.channels instanceof Array)
+          });
 
-        this.channels[0] = new Channel(jsonRss)
-        console.log(this.channels[0])
-
-      });
-    });
+        });
+    })
   }
 
   isListEmpty (): boolean {

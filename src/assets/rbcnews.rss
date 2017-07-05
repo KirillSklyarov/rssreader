@@ -1,6 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <rss version="2.0">
    <channel>
+      <cloud domain="rpc.sys.com" port="80" path="/RPC2" registerProcedure="myCloud.rssPleaseNotify" protocol="xml-rpc" />
+
+      <textInput>
+
+        <title> -- The label of the Submit button in the text input area.</title>
+
+        <description> -- Explains the text input area.</description>
+
+        <name> -- The name of the text object in the text input area.</name>
+
+        <link> -- The URL of the CGI script that processes text input requests. </link>
+      </textInput>
+
+
       <title><![CDATA[РБК - Все материалы]]></title>
       <link>http://www.rbc.ru/</link>
       <description>rss.rbc.ru</description>

@@ -6,6 +6,7 @@ export class HttpService {
 
   constructor (private http: Http) { }
   getData (query: string) {
+    console.log(query)
     return this.http.get(query)
   }
 }
