@@ -13,8 +13,8 @@ export class Channel {
   copyright: string
   managingEditor: string
   webMaster: string
-  pubDate: Date
-  lastBuildDate: Date
+  pubDate: string
+  lastBuildDate: string
   category: string
   generator: string
   docs: string
