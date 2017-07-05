@@ -23,36 +23,12 @@ export class HomeComponent implements OnInit {
   ngOnInit () {
 
     let parser = require('rss-parser');
-    let channel: Channel
-    let item: Item
 
-    // Pasre RSS
 
-    this.channelsUrl.forEach(chanUrl => {
-
-      parser.parseURL(this.channelsUrl[0], function(err, parsed) {
-        console.log(parsed.feed)
-
-        channel = new Channel()
-        // channel.items = parsed.feed[]
-        // for (let keyChannel in parsed.feed) {
-        //   if (keyChannel == 'entries') {
-            channel.items = []
-            parsed.feed['entries'].forEach(entry => {
-              item = new Item()
-              for (let keyEntry in entry) {
-                item[keyEntry] = entry[keyEntry]
-              }
-              channel.items.push(item)
-            })
-            // console.log(channel.items)
-          // } 
-        }
-      })
-
-    })
-    this.channels.forEach(channel => {
-      console.log(channel)
+    parser.parseURL(this.channelsUrl[0], function(err, parsed) {
+      console.log(parsed.feed)
+      let item = new Item(parsed.feed.entries[0])
+      console.log(item)
     })
   }
 
