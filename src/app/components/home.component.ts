@@ -17,25 +17,16 @@ export class HomeComponent implements OnInit {
   constructor (private httpService: HttpService) { }
 
   ngOnInit () {
+    let FeedMe = require('feedme')
+    let http = require('http')
+    //let parser = new FeedMe
+
     for (let i = 0; i < this.channelsUrl.length; i++) {
-      this.httpService.getData(this.channelsUrl[i]).
-      subscribe((data: Response) => {
-
-        // Parse XML to object Channel
-        let parseString = require('xml2js').parseString;
-        let xml = data['_body']
-
-        parseString(xml, function (err, result) {
-          console.log(result.rss.channel[0])
-          for (let i = 0; i < result.rss.channel.length; i++){
-            let chan = result.rss.channel[i]
-            let channel = Channel
-            for (let prop in chan) {
-              if (prop == 'pubDate' || prop == 'lastBuildDate') {
-                channel[prop] = new Date(chan[prop])
-              }
-            }
-          }
+      http.get(this.channelsUrl[i], function(res) {
+        let parser = new FeedMe(true)
+        res.pipe(parser)
+        parser.on('end', function() {
+          console.log(parser.done())
         })
       })
     }
