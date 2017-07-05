@@ -21,7 +21,7 @@
     "@angular/platform-browser-dynamic": "^2.3.1",
     "@angular/router": "^3.3.1",
     "core-js": "^2.4.1",
-    "rss-parser": "^2.10.0",
+    "feedme": "^1.0.0",
     "rss-to-json": "^1.0.2",
     "rxjs": "^5.0.1",
     "ts-helpers": "^1.1.1",

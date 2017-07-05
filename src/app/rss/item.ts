@@ -7,8 +7,7 @@ export interface ItemBackend {
   comments: string
   enclosure: string
   guid: string
-  pubDate: string
-  isoDate: string
+  pubdate: string
   source: string;
 }
 
@@ -21,8 +20,7 @@ export class Item {
   comments: string
   enclosure: string
   guid: string
-  pubDate: string
-  isoDate: Date
+  pubDate: Date
   source: string;
 
   constructor (json: ItemBackend) {
@@ -34,8 +32,7 @@ export class Item {
     this.comments = json.comments
     this.enclosure = json.enclosure
     this.guid = json.guid
-    this.pubDate = json.pubDate
-    this.isoDate = new Date(json.isoDate)
+    this.pubDate = new Date(json.pubdate)
     this.source = json.source
   }
 }

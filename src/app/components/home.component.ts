@@ -21,15 +21,24 @@ export class HomeComponent implements OnInit {
   constructor (private httpService: HttpService) { }
 
   ngOnInit () {
+    var FeedMe = require('feedme');
+    var http = require('http');
 
-    let parser = require('rss-parser');
+    http.get(this.channelsUrl[0], function(res) {
+      var parser = new FeedMe(true);
+      res.pipe(parser);
+      parser.on('end', function() {
+        let jsonRss = parser.done()
 
+        console.log(jsonRss)
 
-    parser.parseURL(this.channelsUrl[0], function(err, parsed) {
-      console.log(parsed.feed)
-      let item = new Item(parsed.feed.entries[0])
-      console.log(item)
-    })
+        this.channels = []
+
+        this.channels[0] = new Channel(jsonRss)
+        console.log(this.channels[0])
+
+      });
+    });
   }
 
   isListEmpty (): boolean {
