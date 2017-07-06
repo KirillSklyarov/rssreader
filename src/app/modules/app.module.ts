@@ -8,17 +8,20 @@ import { HttpService } from './../services/http.service'
 import { AppComponent } from './../components/app.component'
 import { HomeComponent } from './../components/home.component'
 import { ChannelComponent } from './../components/channel.component'
+import { MessageComponent } from './../components/message.component'
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'channel/:channel', component: ChannelComponent }
+  { path: 'channel/:channel', component: ChannelComponent },
+  { path: 'channel/:channel/message/:id', component: MessageComponent }
 ]
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    ChannelComponent
+    ChannelComponent,
+    MessageComponent
   ],
   imports: [
     BrowserModule,

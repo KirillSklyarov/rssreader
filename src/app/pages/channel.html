@@ -7,8 +7,8 @@
 <div *ngIf="channelIsExist">
   <h2 *ngIf="channel">Channel: {{channel.title}}</h2>
   <ul *ngIf="channel">
-    <li *ngFor="let item of channel.items">
-      {{item.title}}
+    <li *ngFor="let item of channel.items; let i = index">
+      <a routerLink="message/{{i}}">{{item.title}}</a>
     </li>
   </ul>
 </div>
