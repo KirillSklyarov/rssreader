@@ -115,3 +115,12 @@ export class Channel {
     this.backendChannelDescription = description
   }
 }
+
+export function parseRss(rss: string, info: BackendChannelDescription):
+  Channel {
+
+  // Deserialization RSS to Cannel object
+  let convert = require('xml-js')
+  let rssJson = JSON.parse(convert.xml2json(rss, {compact: true}))
+  return new Channel(rssJson.rss.channel, info)
+}

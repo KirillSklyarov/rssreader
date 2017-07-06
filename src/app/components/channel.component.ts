@@ -9,6 +9,7 @@ import { Channel } from './../rss/channel'
 import { Item } from './../rss/item'
 import { Image } from './../rss/image'
 import { TextInput } from './../rss/textinput'
+import { BackendChannelDescription } from './../rss/backendchanneldescription'
 
 @Component({
   selector: 'channel-app',
@@ -19,12 +20,13 @@ import { TextInput } from './../rss/textinput'
 export class ChannelComponent implements OnInit, OnDestroy {
 
   channelUrl: string
+
+  channelInfo: BackendChannelDescription
   channel: Channel
-  channelNotFound = true
+  channelIsExist = false
 
   private channelName: string
   private subscription: Subscription;
-
 
   constructor(private httpService: HttpService,
     private activateRoute: ActivatedRoute){
@@ -36,14 +38,31 @@ export class ChannelComponent implements OnInit, OnDestroy {
       this.httpService.getData('assets/data/rsschannels.json').
         subscribe((data: Response) => {
           let channelList = data.json()
+          console.log(channelList)
 
           // Find current channel
-          channelList.forEach((channel, index) => {
-            if (this.channelName == channel.name) {
-              this.channelNotFound = false
-              
+          channelList.forEach(channel => {
+            console.log(channel)
+            console.log(this.channelIsExist)
+
+            if (!this.channelIsExist) {
+              if (this.channelName === channel.name) {
+                console.log('Channel is found')
+                this.channelIsExist = true
+                this.channelInfo = channel
+              }
             }
           })
+
+          // Get channel
+          if (this.channelIsExist) {
+            this.httpService.getData(this.channelInfo.link).
+              subscribe((rssData: Response) => {
+
+            })
+          } else {
+            console.error('Channel not found')
+          }
         })
     })
   }

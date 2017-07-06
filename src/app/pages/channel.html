@@ -1,6 +1,7 @@
-<div *ngIf="channelNotFound">
-  Channel not found
+<div *ngIf="!channelIsExist">
+  <p>Channel not found</p>
+  <a href="/">Return to main page</a>
 </div>
-<div *ngIf="!channelNotFound">
+<div *ngIf="channelIsExist">
   Channel
 </div>
