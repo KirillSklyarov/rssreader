@@ -17,7 +17,7 @@ import { BackendChannelDescription } from './../rss/backendchanneldescription'
 export class HomeComponent implements OnInit {
 
   channels: Channel[] = []
-  channelUrls: BackendChannelDescription[] = []
+  channelsInfo: BackendChannelDescription[] = []
 
   constructor (private httpService: HttpService) { }
 
@@ -27,17 +27,15 @@ export class HomeComponent implements OnInit {
 
     // Request information about channels
     this.httpService.getData('assets/data/rsschannels.json').
-      subscribe((data: Response) => {
-        homeComponent.channelUrls = data.json()
+    subscribe((data: Response) => {
+        homeComponent.channelsInfo = data.json()
 
         // Add channel objects to channels Array
-        homeComponent.channelUrls.forEach((url, index) => {
-          this.httpService.getData(this.channelUrls[index].link).
-            subscribe((rssData: Response) => {
-
+        homeComponent.channelsInfo.forEach((url, index) => {
+          this.httpService.getData(this.channelsInfo[index].link).
+          subscribe((rssData: Response) => {
               let rssXml = rssData.text()
-              let channel = parseRss(rssXml, homeComponent.channelUrls[index])
-
+              let channel = parseRss(rssXml, homeComponent.channelsInfo[index])
               console.log(channel)
               homeComponent.channels[index] = channel
             });

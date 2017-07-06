@@ -5,7 +5,7 @@ import { HttpService } from './../services/http.service'
 import { ActivatedRoute} from '@angular/router'
 import { Subscription } from 'rxjs/Subscription'
 
-import { Channel } from './../rss/channel'
+import { Channel, parseRss } from './../rss/channel'
 import { Item } from './../rss/item'
 import { Image } from './../rss/image'
 import { TextInput } from './../rss/textinput'
@@ -36,34 +36,35 @@ export class ChannelComponent implements OnInit, OnDestroy {
     this.subscription = this.activateRoute.params.subscribe(params => {
       this.channelName = params['channel']
       this.httpService.getData('assets/data/rsschannels.json').
-        subscribe((data: Response) => {
-          let channelList = data.json()
-          console.log(channelList)
+      subscribe((data: Response) => {
+        let channelList = data.json()
+        console.log(channelList)
 
-          // Find current channel
-          channelList.forEach(channel => {
-            console.log(channel)
-            console.log(this.channelIsExist)
+        // Find current channel
+        channelList.forEach(channel => {
+          console.log(channel)
+          console.log(this.channelIsExist)
 
-            if (!this.channelIsExist) {
-              if (this.channelName === channel.name) {
-                console.log('Channel is found')
-                this.channelIsExist = true
-                this.channelInfo = channel
-              }
+          if (!this.channelIsExist) {
+            if (this.channelName === channel.name) {
+              console.log('Channel is found')
+              this.channelIsExist = true
+              this.channelInfo = channel
             }
-          })
-
-          // Get channel
-          if (this.channelIsExist) {
-            this.httpService.getData(this.channelInfo.link).
-              subscribe((rssData: Response) => {
-
-            })
-          } else {
-            console.error('Channel not found')
           }
         })
+
+        // Get channel
+        if (this.channelIsExist) {
+          this.httpService.getData(this.channelInfo.link).
+          subscribe((rssData: Response) => {
+            let rssXml = rssData.text()
+            this.channel = parseRss(rssXml, this.channelInfo)
+          })
+        } else {
+          console.error('Channel not found')
+        }
+      })
     })
   }
 
