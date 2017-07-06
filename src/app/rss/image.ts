@@ -1,7 +1,9 @@
+import { RssData, getRssData } from './rssdata'
+
 export interface ImageBackend {
-  url: string
-  title: string
-  link: string;
+  url: RssData
+  title: RssData
+  link: RssData;
 }
 
 export class Image {
@@ -10,8 +12,8 @@ export class Image {
   link: string;
 
   constructor(json: ImageBackend) {
-    this.url = json.url
-    this.title = json.title
-    this.link = json.link;
+    this.url = getRssData(json.url)
+    this.title = getRssData(json.title)
+    this.link = getRssData(json.link);
   }
 }

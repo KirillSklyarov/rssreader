@@ -1,9 +1,13 @@
+import { RssData, getRssData } from './rssdata'
+
 export interface CloudBackend {
-  domain: string
-  path: string
-  port: number
-  protocol: string
-  registerprocedure: string;
+  _attributes: {
+    domain: string
+    path: string
+    port: string
+    protocol: string
+    registerProcedure: string;
+  }
 }
 
 export class Cloud {
@@ -14,10 +18,15 @@ export class Cloud {
   registerProcedure: string;
 
   constructor (json: CloudBackend) {
-    this.domain = json.domain
-    this.path = json.path
-    this.port = json.port
-    this.protocol = json.protocol
-    this.registerProcedure = json.registerprocedure;
+    this.domain = json._attributes.domain
+    this.path = json._attributes.path
+    this.protocol = json._attributes.protocol
+    this.registerProcedure = json._attributes.registerProcedure;
+
+    if (json._attributes.port) {
+      this.port = Number(json._attributes.port)
+    } else {
+      this.port = null
+    }
   }
 }

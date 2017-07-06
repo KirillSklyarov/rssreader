@@ -1,8 +1,10 @@
+import { RssData, getRssData } from './rssdata'
+
 export interface TextInputBackend {
-  title: string
-  description: string
-  name: string
-  link: string;
+  title: RssData
+  description: RssData
+  name: RssData
+  link: RssData;
 }
 
 export class TextInput {
@@ -12,9 +14,9 @@ export class TextInput {
   link: string;
 
   constructor(json: TextInputBackend) {
-    this.title = json.title
-    this.description = json.description
-    this.name = json.name
-    this.link = json.link;
+    this.title = getRssData(json.title)
+    this.description = getRssData(json.description)
+    this.name = getRssData(json.name)
+    this.link = getRssData(json.link);
   }
 }

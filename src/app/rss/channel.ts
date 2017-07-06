@@ -2,28 +2,29 @@ import { Item, ItemBackend } from './item'
 import { Image, ImageBackend } from './image'
 import { TextInput, TextInputBackend } from './textinput'
 import { Cloud, CloudBackend } from './cloud'
+import { RssData, getRssData } from './rssdata'
 
 export interface ChannelBackend {
-  title: string
-  link: string
-  description: string
-  items: ItemBackend[]
-  language: string
-  copyright: string
-  managingeditor: string
-  webmaster: string
-  pubdate: string
-  lastbuilddate: string
-  category: string
-  generator: string
-  docs: string
+  title: RssData
+  link: RssData
+  description: RssData
+  item: ItemBackend[]
+  language: RssData
+  copyright: RssData
+  managingEditor: RssData
+  webMaster: RssData
+  pubDate: RssData
+  lastBuildDate: RssData
+  category: RssData
+  generator: RssData
+  docs: RssData
   cloud: CloudBackend
-  ttl: number
+  ttl: RssData
   image: ImageBackend
-  rating: string
-  textinput: TextInputBackend
-  skiphours: number
-  skipdays: string;
+  rating: RssData
+  textInput: TextInputBackend
+  skipHours: RssData
+  skipDays: RssData;
 }
 
 export class Channel {
@@ -36,7 +37,7 @@ export class Channel {
   managingEditor: string
   webMaster: string
   pubDate: Date
-  lastBuildDate: string
+  lastBuildDate: Date
   category: string
   generator: string
   docs: string
@@ -46,37 +47,67 @@ export class Channel {
   rating: string
   textInput: TextInput
   skipHours: number
-  skipDays: string
+  skipDays: string;
 
   constructor(json: ChannelBackend) {
-    this.title = json.title
-    this.link = json.link
-    this.description = json.description
-    this.language = json.language
-    this.copyright = json.copyright
-    this.managingEditor = json.managingeditor
-    this.webMaster = json.webmaster
-    this.lastBuildDate = json.lastbuilddate
-    this.category = json.category
-    this.generator = json.generator
-    this.docs = json.docs
-    this.ttl = json.ttl
-    this.rating = json.rating
-    this.skipHours = json.skiphours
-    this.skipDays = json.skipdays
+    this.title = getRssData(json.title)
+    this.link = getRssData(json.link)
+    this.description = getRssData(json.description)
+    this.language = getRssData(json.language)
+    this.copyright = getRssData(json.copyright)
+    this.managingEditor = getRssData(json.managingEditor)
+    this.webMaster = getRssData(json.webMaster)
+    this.category = getRssData(json.category)
+    this.generator = getRssData(json.generator)
+    this.docs = getRssData(json.docs)
+    this.rating = getRssData(json.rating)
+    this.skipDays = getRssData(json.skipDays)
 
     this.items = []
-    json.items.forEach((item, index) => {
-      this.items[index] = new Item(item)
+    json.item.forEach((singleItem, index) => {
+      this.items[index] = new Item(singleItem)
     })
 
-    if (json.pubdate) { this.pubDate = new Date(json.pubdate); }
+    if (json.pubDate) {
+      this.pubDate = new Date(getRssData(json.pubDate))
+    } else {
+      this.pubDate = null
+    }
 
-    if (json.cloud) { this.cloud = new Cloud(json.cloud) }
+    if (json.lastBuildDate) {
+      this.lastBuildDate = new Date(getRssData(json.lastBuildDate))
+    } else {
+      this.lastBuildDate = null
+    }
 
-    if (json.image) { this.image = new Image(json.image) }
+    if (json.cloud) {
+      this.cloud = new Cloud(json.cloud)
+    } else {
+      this.cloud = null
+    }
 
-    if (json.textinput) { this.textInput = new TextInput(json.textinput) }
+    if (json.image) {
+      this.image = new Image(json.image)
+    } else {
+      this.image = null
+    }
+
+    if (json.textInput) {
+      this.textInput = new TextInput(json.textInput)
+    } else {
+      this.textInput = null
+    }
+
+    if (json.ttl) {
+      this.ttl = Number(getRssData(json.ttl))
+    } else {
+      this.ttl = null
+    }
+
+    if (json.skipHours) {
+      this.skipHours = Number(getRssData(json.skipHours))
+    } else {
+      this.skipHours = null
+    }
   }
-
 }

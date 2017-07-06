@@ -1,14 +1,16 @@
+import { RssData, getRssData } from './rssdata'
+
 export interface ItemBackend {
-  title: string[]
-  link: string[]
-  description: string[]
-  author: string[]
-  category: string[]
-  comments: string[]
-  enclosure: string[]
-  guid: string[]
-  pubDate: string[]
-  source: string[];
+  title: RssData
+  link: RssData
+  description: RssData
+  author: RssData
+  category: RssData
+  comments: RssData
+  enclosure: RssData
+  guid: RssData
+  pubDate: RssData
+  source: RssData;
 }
 
 export class Item {
@@ -24,14 +26,20 @@ export class Item {
   source: string;
 
   constructor (json: ItemBackend) {
-    this.title = json.title[0]
-    this.link = json.link[0]
-    this.description = json.description[0]
-    this.author = json.author[0]
-    this.category = json.category[0]
-    this.comments = json.comments[0]
-    this.enclosure = json.enclosure[0]
-    this.guid = json.guid[0]
-    this.pubDate = new Date(json.pubDate[0])
-    this.source = json.source[0]
+    this.title = getRssData(json.title)
+    this.link = getRssData(json.link)
+    this.description = getRssData(json.description)
+    this.author = getRssData(json.author)
+    this.category = getRssData(json.category)
+    this.comments = getRssData(json.comments)
+    this.enclosure = getRssData(json.enclosure)
+    this.guid = getRssData(json.guid)
+    this.source = getRssData(json.source);
+
+    if (json.pubDate) {
+      this.pubDate = new Date(getRssData(json.pubDate))
+    } else {
+      this.pubDate = null
+    }
+  }
 }

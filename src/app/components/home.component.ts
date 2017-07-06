@@ -29,12 +29,12 @@ export class HomeComponent implements OnInit {
       this.httpService.getData(this.channelUrls[index]).
         subscribe((data: Response) => {
           let rssXml = data.text()
-          let parseString = require('xml2js').parseString;
+          let convert = require('xml-js')
 
-          parseString(rssXml, function (err, result) {
-            console.log(result);
-            console.log(homeComponent.channels instanceof Array)
-          });
+          let rssJson =  JSON.parse(convert.xml2json(rssXml,
+            {compact: true}))
+          let channel: Channel = new Channel(rssJson.rss.channel)
+          console.log(channel)
 
         });
     })
