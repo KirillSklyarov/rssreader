@@ -5,8 +5,17 @@
   (keypress)="($event.keyCode==13)? addChannel() : return" />
   <button>Add channel</button>
 </div>
-<div [ngClass]="{invisible:isListEmpty()}">
+<div *ngIf="!isListHasElements()">
   <p>List is empty</p>
+</div>
+
+<div *ngIf="isListHasElements()">
+  <h2>List of channels</h2>
+  <ul>
+    <li *ngFor="let channel of channels">
+      <h3>{{channel.title}}</h3>
+    </li>
+  </ul>
 </div>
 
 <div>

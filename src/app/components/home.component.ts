@@ -35,12 +35,12 @@ export class HomeComponent implements OnInit {
             {compact: true}))
           let channel: Channel = new Channel(rssJson.rss.channel)
           console.log(channel)
-
+          homeComponent.channels[index] = channel
         });
     })
   }
 
-  isListEmpty (): boolean {
+  isListHasElements (): boolean {
     if (this.channels.length > 0) { return true }
     return false
   }
