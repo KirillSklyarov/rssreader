@@ -3,6 +3,7 @@ import { Image, ImageBackend } from './image'
 import { TextInput, TextInputBackend } from './textinput'
 import { Cloud, CloudBackend } from './cloud'
 import { RssData, getRssData } from './rssdata'
+import { BackendChannelDescription } from './../rss/backendchanneldescription'
 
 export interface ChannelBackend {
   title: RssData
@@ -28,6 +29,7 @@ export interface ChannelBackend {
 }
 
 export class Channel {
+  backendChannelDescription: BackendChannelDescription
   title: string
   link: string
   description: string
@@ -49,7 +51,7 @@ export class Channel {
   skipHours: number
   skipDays: string;
 
-  constructor(json: ChannelBackend) {
+  constructor(json: ChannelBackend, description: BackendChannelDescription) {
     this.title = getRssData(json.title)
     this.link = getRssData(json.link)
     this.description = getRssData(json.description)
@@ -109,5 +111,7 @@ export class Channel {
     } else {
       this.skipHours = null
     }
+
+    this.backendChannelDescription = description
   }
 }
