@@ -24,6 +24,7 @@ export class ChannelComponent implements OnInit, OnDestroy {
   channelInfo: BackendChannelDescription
   channel: Channel
   channelIsExist = false
+  channelTitle = ""
 
   private channelName: string
   private subscription: Subscription;
@@ -38,16 +39,11 @@ export class ChannelComponent implements OnInit, OnDestroy {
       this.httpService.getData('assets/data/rsschannels.json').
       subscribe((data: Response) => {
         let channelList = data.json()
-        console.log(channelList)
 
         // Find current channel
         channelList.forEach(channel => {
-          console.log(channel)
-          console.log(this.channelIsExist)
-
           if (!this.channelIsExist) {
             if (this.channelName === channel.name) {
-              console.log('Channel is found')
               this.channelIsExist = true
               this.channelInfo = channel
             }
@@ -60,6 +56,12 @@ export class ChannelComponent implements OnInit, OnDestroy {
           subscribe((rssData: Response) => {
             let rssXml = rssData.text()
             this.channel = parseRss(rssXml, this.channelInfo)
+            console.log(this.channel.title)
+            console.log(this.channel)
+            this.channelTitle = this.channel.title
+            this.channel.items.forEach((item) => {
+              console.log(item.description)
+            })
           })
         } else {
           console.error('Channel not found')

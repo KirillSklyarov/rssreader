@@ -5,5 +5,10 @@
   <a href="/">Return to main page</a>
 </div>
 <div *ngIf="channelIsExist">
-  Channel
+  <h2 *ngIf="channel">Channel: {{channel.title}}</h2>
+  <ul *ngIf="channel">
+    <li *ngFor="let item of channel.items">
+      {{item.title}}
+    </li>
+  </ul>
 </div>

@@ -36,7 +36,6 @@ export class HomeComponent implements OnInit {
           subscribe((rssData: Response) => {
               let rssXml = rssData.text()
               let channel = parseRss(rssXml, homeComponent.channelsInfo[index])
-              console.log(channel)
               homeComponent.channels[index] = channel
             });
         })

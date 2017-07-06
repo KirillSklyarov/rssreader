@@ -9,7 +9,7 @@
 
 <div *ngIf="isListHasElements()">
   <h2>List of channels</h2>
-  <ul>
+  <ul *ngIf="channels">
     <li *ngFor="let channel of channels; let i = index">
       <h3><a href="channel/{{channelsInfo[i].name}}">{{channel.title}}</a> </h3>
     </li>
