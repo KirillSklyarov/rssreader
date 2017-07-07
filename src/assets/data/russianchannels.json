@@ -1,0 +1,9 @@
+[
+  { "name": "rbc",
+    "link": "assets/channels/rbcnews.rss"
+  },
+
+  { "name": "kommersant",
+    "link": "assets/channels/kommersantnews.xml"
+  }
+]

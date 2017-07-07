@@ -1,0 +1,10 @@
+[
+  {
+    "name": "bbc",
+    "link": "assets/channels/bbcnews.xml"
+  },
+  {
+    "name": "cnn",
+    "link": "assets/channels/cnnnews.rss"
+  }
+]
