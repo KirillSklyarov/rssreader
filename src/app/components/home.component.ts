@@ -6,7 +6,7 @@ import { Channel, parseRss } from './../rss/channel'
 import { Item } from './../rss/item'
 import { Image } from './../rss/image'
 import { TextInput } from './../rss/textinput'
-import { BackendChannelDescription } from './../rss/backendchanneldescription'
+import { BackendChannelInfo } from './../rss/backendchannelinfo'
 
 @Component({
   selector: 'home-app',
@@ -17,7 +17,7 @@ import { BackendChannelDescription } from './../rss/backendchanneldescription'
 export class HomeComponent implements OnInit {
 
   channels: Channel[] = []
-  channelsInfo: BackendChannelDescription[] = []
+  channelsInfo: BackendChannelInfo[] = []
 
   constructor (private httpService: HttpService) { }
 

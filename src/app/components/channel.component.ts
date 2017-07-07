@@ -9,9 +9,9 @@ import { Channel, parseRss } from './../rss/channel'
 import { Item } from './../rss/item'
 import { Image } from './../rss/image'
 import { TextInput } from './../rss/textinput'
-import { BackendChannelDescription } from './../rss/backendchanneldescription'
+import { BackendChannelInfo } from './../rss/backendchannelinfo'
 
-import { BreakException } from './../exeptions/breakexception'
+import { BreakException } from './../libs/breakexception'
 
 @Component({
   selector: 'channel-app',
@@ -23,7 +23,7 @@ export class ChannelComponent implements OnInit, OnDestroy {
 
   channelUrl: string
 
-  channelInfo: BackendChannelDescription
+  channelInfo: BackendChannelInfo
   channel: Channel
   channelIsExist = false
   channelTitle = ""
@@ -40,19 +40,17 @@ export class ChannelComponent implements OnInit, OnDestroy {
       this.channelName = params['channel']
       this.httpService.getData('assets/data/rsschannels.json').subscribe(
         (data: Response) => {
-        let channelList = data.json()
+        let channelInfoList = data.json()
         let iterations = 0
         // Find current channel
 
         try {
-          channelList.forEach(channel => {
+          channelInfoList.forEach(channelInfo => {
             console.log(++iterations)
-            if (!this.channelIsExist) {
-              if (this.channelName == channel.name) {
-                this.channelIsExist = true
-                this.channelInfo = channel
-                throw BreakException
-              }
+            if (this.channelName == channelInfo.name) {
+              this.channelIsExist = true
+              this.channelInfo = channelInfo
+              throw BreakException
             }
           })
         } catch(error) {
@@ -60,7 +58,6 @@ export class ChannelComponent implements OnInit, OnDestroy {
             throw error
           }
         }
-
 
         // Get channel
         if (this.channelIsExist) {
@@ -71,9 +68,6 @@ export class ChannelComponent implements OnInit, OnDestroy {
             // console.log(this.channel.title)
             // console.log(this.channel)
             this.channelTitle = this.channel.title
-            this.channel.items.forEach((item) => {
-              // console.log(item.description)
-            })
           })
         } else {
           console.error('Channel not found')

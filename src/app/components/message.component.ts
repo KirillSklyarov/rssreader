@@ -9,7 +9,9 @@ import { Channel, parseRss } from './../rss/channel'
 import { Item } from './../rss/item'
 import { Image } from './../rss/image'
 import { TextInput } from './../rss/textinput'
-import { BackendChannelDescription } from './../rss/backendchanneldescription'
+import { BackendChannelInfo } from './../rss/backendchannelinfo'
+
+import { BreakException } from './../libs/breakexception'
 
 @Component({
   selector: 'message-app',
@@ -19,8 +21,18 @@ import { BackendChannelDescription } from './../rss/backendchanneldescription'
 })
 export class MessageComponent /*implements OnInit, OnDestroy*/ {
 
+  channelInfo: BackendChannelInfo
+  channel: Channel
   channelName: string
-  messageId: string
+  itemId: number
+  isItemExist = false
+  isItemDescriptionExist = false
+  itemTitle = ''
+  itemDescription = ''
+  itemLink = ''
+  channelIsExist = false
+  messageIsExist = false
+
   private subscription: Subscription;
 
   constructor(private httpService: HttpService,
@@ -30,13 +42,50 @@ export class MessageComponent /*implements OnInit, OnDestroy*/ {
   ngOnInit() {
     this.subscription = this.activateRoute.params.subscribe(params => {
       this.channelName = params['channel']
-      this.messageId = params['id']
       this.httpService.getData('assets/data/rsschannels.json').subscribe(
         (data: Response) => {
           let channelList = data.json()
+
+          try {
+            channelList.forEach(channelInfo => {
+              if (this.channelName == channelInfo.name) {
+                this.channelIsExist = true
+                this.channelInfo = channelInfo
+                throw BreakException
+              }
+            })
+          } catch(error) {
+            if (error !== BreakException) {
+              throw error
+            }
+          }
+
+          if (this.channelIsExist) {
+            this.subscription = this.activateRoute.params.subscribe(params => {
+              this.itemId = Number(params['itemId'])
+              this.httpService.getData(this.channelInfo.link).subscribe(
+                (rssData: Response) => {
+                  let rssXml = rssData.text()
+                  this.channel = parseRss(rssXml, this.channelInfo)
+                  console.log(this.channel.items[this.itemId])
+                  if (this.channel.items[this.itemId]) {
+                    this.isItemExist = true
+                    this.itemTitle = this.channel.items[this.itemId].title
+                    this.itemLink = this.channel.items[this.itemId].link
+                    if (this.channel.items[this.itemId].description) {
+                      this.isItemDescriptionExist = true
+                      this.itemDescription = this.channel.items[this.itemId].
+                      description
+                    }
+                  } else {
+                    console.error('Item not found')
+                  }
+                }
+              )
+            })
+          }
         }
       )
     })
   }
-
 }

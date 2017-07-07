@@ -3,7 +3,7 @@ import { Image, ImageBackend } from './image'
 import { TextInput, TextInputBackend } from './textinput'
 import { Cloud, CloudBackend } from './cloud'
 import { RssData, getRssData } from './rssdata'
-import { BackendChannelDescription } from './../rss/backendchanneldescription'
+import { BackendChannelInfo } from './../rss/backendchannelinfo'
 
 export interface ChannelBackend {
   title: RssData
@@ -29,7 +29,7 @@ export interface ChannelBackend {
 }
 
 export class Channel {
-  backendChannelDescription: BackendChannelDescription
+  backendChannelInfo: BackendChannelInfo
   title: string
   link: string
   description: string
@@ -51,7 +51,7 @@ export class Channel {
   skipHours: number
   skipDays: string;
 
-  constructor(json: ChannelBackend, description: BackendChannelDescription) {
+  constructor(json: ChannelBackend, channelInfo: BackendChannelInfo) {
     this.title = getRssData(json.title)
     this.link = getRssData(json.link)
     this.description = getRssData(json.description)
@@ -112,11 +112,11 @@ export class Channel {
       this.skipHours = null
     }
 
-    this.backendChannelDescription = description
+    this.backendChannelInfo = channelInfo
   }
 }
 
-export function parseRss(rss: string, info: BackendChannelDescription):
+export function parseRss(rss: string, info: BackendChannelInfo):
   Channel {
 
   // Deserialization RSS to Cannel object

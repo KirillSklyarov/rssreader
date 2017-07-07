@@ -7,3 +7,16 @@
 <div>
   <a routerLink="../../">Return to channel page</a>
 </div>
+<div *ngIf="!isItemExist">
+  <p>Item not found</p>
+</div>
+<div>
+  <h3>{{itemTitle}}</h3>
+  <p *ngIf="isItemDescriptionExist">{{itemDescription}}</p>
+</div>
+<div *ngIf="!isItemDescriptionExist">
+  <p>The item doesn’t have description</p>
+</div>
+<div>
+  <a href="{{itemLink}}" target="blank">Read in source</a>
+</div>

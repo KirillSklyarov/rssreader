@@ -13,7 +13,7 @@ import { MessageComponent } from './../components/message.component'
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'channel/:channel', component: ChannelComponent },
-  { path: 'channel/:channel/message/:id', component: MessageComponent }
+  { path: 'channel/:channel/message/:itemId', component: MessageComponent }
 ]
 
 @NgModule({
