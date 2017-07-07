@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core'
 import { Response } from '@angular/http'
-import { HttpService } from './../../services/http.service'
+import { HttpService } from './../../services/http.service/http.service'
 
 import { Channel, parseRss } from './../../rss/channel'
 import { Item } from './../../rss/item'

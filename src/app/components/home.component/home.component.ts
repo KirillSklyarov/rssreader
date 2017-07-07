@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core'
 import { Response } from '@angular/http'
-import { HttpService } from './../../services/http.service'
+import { HttpService } from './../../services/http.service/http.service'
+import { ChannelService } from
+  './../../services/channel.service/channel.service'
 
 import { Channel, parseRss } from './../../rss/channel'
 import { Item } from './../../rss/item'
@@ -14,7 +16,7 @@ import { FEEDS_DATABASE_LINK } from './../../libs/feedsdatabaselink'
   selector: 'home-app',
   templateUrl: './home.html',
   styleUrls: ['./../../styles/style.css'],
-  providers: [HttpService]
+  providers: [HttpService, ChannelService]
 })
 export class HomeComponent implements OnInit {
 
@@ -22,9 +24,13 @@ export class HomeComponent implements OnInit {
   channelsInfo: BackendChannelInfo[] = []
   isChannelsLoaded = false
 
-  constructor (private httpService: HttpService) { }
+  constructor (private httpService: HttpService,
+    private channelService: ChannelService) { }
 
   ngOnInit () {
+
+    this.channelService.getChannels()
+
 
     this.httpService.getData(FEEDS_DATABASE_LINK).
     subscribe((data: Response) => {

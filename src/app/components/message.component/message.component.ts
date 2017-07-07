@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy, Input } from '@angular/core'
 import { Response } from '@angular/http'
-import { HttpService } from './../../services/http.service'
+import { HttpService } from './../../services/http.service/http.service'
 
 import { ActivatedRoute} from '@angular/router'
 import { Subscription } from 'rxjs/Subscription'

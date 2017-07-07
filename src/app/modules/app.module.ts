@@ -3,7 +3,8 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { Routes, RouterModule } from '@angular/router'
-import { HttpService } from './../services/http.service'
+import { HttpService } from './../services/http.service/http.service'
+import { ChannelService } from './../services/channel.service/channel.service'
 
 import { AppComponent } from './../components/app.component'
 import { HomeComponent } from
@@ -36,7 +37,7 @@ const appRoutes: Routes = [
     HttpModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [HttpService],
+  providers: [HttpService, ChannelService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
