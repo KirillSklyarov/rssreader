@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet title="XSL_formatting" type="text/xsl" href="/shared/bsp/xsl/rss/nolsol.xsl"?>
+<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:media="http://search.yahoo.com/mrss/">
+    <channel>
+        <title><![CDATA[BBC News - Home]]></title>
+        <description><![CDATA[BBC News - Home]]></description>
+        <link>http://www.bbc.co.uk/news/</link>
+        <image>
+            <url>http://news.bbcimg.co.uk/nol/shared/img/bbc_news_120x60.gif</url>
+            <title>BBC News - Home</title>
+            <link>http://www.bbc.co.uk/news/</link>
+        </image>
+        <generator>RSS for Node</generator>
+        <lastBuildDate>Fri, 07 Jul 2017 09:10:28 GMT</lastBuildDate>
+        <copyright><![CDATA[Copyright: (C) British Broadcasting Corporation, see http://news.bbc.co.uk/2/hi/help/rss/4498287.stm for terms and conditions of reuse.]]></copyright>
+        <language><![CDATA[en-gb]]></language>
+        <ttl>15</ttl>
+        <item>
+            <title><![CDATA[G20: Trump and Putin to meet face to face for first time]]></title>
+            <description><![CDATA[They are attending a tense G20 summit in Hamburg, where climate change and trade are set to dominate.]]></description>
+            <link>http://www.bbc.co.uk/news/world-europe-40527359</link>
+            <guid isPermaLink="true">http://www.bbc.co.uk/news/world-europe-40527359</guid>
+            <pubDate>Fri, 07 Jul 2017 08:12:49 GMT</pubDate>
+            <media:thumbnail width="976" height="549" url="http://c.files.bbci.co.uk/F477/production/_96838526_2fb0691e-4ab8-41e9-a8ae-eb9a9a7b9ba6.jpg"/>
+        </item>
+        <item>
+            <title><![CDATA[May to press G20 on terror financing]]></title>
+            <description><![CDATA[PM says terror threat is evolving and must be targeted "from every angle", ahead of summit.]]></description>
+            <link>http://www.bbc.co.uk/news/uk-politics-40525277</link>
+            <guid isPermaLink="true">http://www.bbc.co.uk/news/uk-politics-40525277</guid>
+            <pubDate>Fri, 07 Jul 2017 08:21:29 GMT</pubDate>
+            <media:thumbnail width="976" height="549" url="http://c.files.bbci.co.uk/BDDC/production/_96840684_mediaitem96840460.jpg"/>
+        </item>
+        <item>
+            <title><![CDATA[Grenfell fire: Inquiry head faces angry residents' meeting]]></title>
+            <description><![CDATA[Sir Martin Moore-Bick met survivors of the west London tower block fire on Thursday evening.]]></description>
+            <link>http://www.bbc.co.uk/news/uk-40520596</link>
+            <guid isPermaLink="true">http://www.bbc.co.uk/news/uk-40520596</guid>
+            <pubDate>Fri, 07 Jul 2017 08:31:23 GMT</pubDate>
+            <media:thumbnail width="2048" height="1152" url="http://c.files.bbci.co.uk/11993/production/_96838027_mediaitem96838026.jpg"/>
+        </item>
+        <item>
+            <title><![CDATA[House prices fall for third quarter running, says Halifax]]></title>
+            <description><![CDATA[House prices have now fallen for three quarters in a row for the first time since 2012, the Halifax says.]]></description>
+            <link>http://www.bbc.co.uk/news/business-40529560</link>
+            <guid isPermaLink="true">http://www.bbc.co.uk/news/business-40529560</guid>
+            <pubDate>Fri, 07 Jul 2017 07:54:54 GMT</pubDate>
+            <media:thumbnail width="2048" height="1152" url="http://c.files.bbci.co.uk/11169/production/_96839996_gettyimages-682714614.jpg"/>
+        </item>
+        <item>
+            <title><![CDATA[Robert Millar: Ex-Tour de France cyclist reveals new identity as Philippa York]]></title>
+            <description><![CDATA[Former Tour de France cyclist Robert Millar is now Philippa York after completing a transition to become a woman.]]></description>
+            <link>http://www.bbc.co.uk/sport/cycling/40529614</link>
+            <guid isPermaLink="true">http://www.bbc.co.uk/sport/cycling/40529614</guid>
+            <pubDate>Fri, 07 Jul 2017 08:56:25 GMT</pubDate>
+            <media:thumbnail width="1024" height="576" url="http://c.files.bbci.co.uk/1769/production/_96839950_york.png"/>
+        </item>
+        <item>
+            <title><![CDATA[Women at war: When Barbara met Becky]]></title>
+            <description><![CDATA[A fresh recruit and a former sergeant discuss the changing role of women in the British army.]]></description>
+            <link>http://www.bbc.co.uk/news/uk-40529160</link>
+            <guid isPermaLink="true">http://www.bbc.co.uk/news/uk-40529160</guid>
+            <pubDate>Fri, 07 Jul 2017 06:35:22 GMT</pubDate>
+            <media:thumbnail width="976" height="549" url="http://c.files.bbci.co.uk/7399/production/_96839592_p057zzmd.jpg"/>
+        </item>
+        <item>
+            <title><![CDATA[Oral sex producing unstoppable bacteria]]></title>
+            <description><![CDATA[If you get gonorrhoea, you might not be able to get rid of it, world health experts warn.]]></description>
+            <link>http://www.bbc.co.uk/news/health-40520125</link>
+            <guid isPermaLink="true">http://www.bbc.co.uk/news/health-40520125</guid>
+            <pubDate>Thu, 06 Jul 2017 23:55:08 GMT</pubDate>
+            <media:thumbnail width="2048" height="1152" url="http://c.files.bbci.co.uk/13C7F/production/_96832018_gettyimages-641831648.jpg"/>
+        </item>
+        <item>
+            <title><![CDATA[Ms Sheila Michaels: Feminist who popularised 'Ms', dies aged 78]]></title>
+            <description><![CDATA[Sheila Michaels fought against the use of 'Mrs' or 'Miss' in favour of a new, more modern title.]]></description>
+            <link>http://www.bbc.co.uk/news/world-us-canada-40528950</link>
+            <guid isPermaLink="true">http://www.bbc.co.uk/news/world-us-canada-40528950</guid>
+            <pubDate>Fri, 07 Jul 2017 08:08:57 GMT</pubDate>
+            <media:thumbnail width="640" height="360" url="http://c.files.bbci.co.uk/D2E9/production/_96839935_wonderwomanforpresident.jpg"/>
+        </item>
+        <item>
+            <title><![CDATA[Charlie Gard: Mother says terminally-ill son 'not in pain and suffering']]></title>
+            <description><![CDATA[A New York hospital has offered to ship the 11-month-old an experimental treatment drug.]]></description>
+            <link>http://www.bbc.co.uk/news/uk-england-london-40528840</link>
+            <guid isPermaLink="true">http://www.bbc.co.uk/news/uk-england-london-40528840</guid>
+            <pubDate>Fri, 07 Jul 2017 08:32:23 GMT</pubDate>
+            <media:thumbnail width="976" height="549" url="http://c.files.bbci.co.uk/F80E/production/_94920536_mediaitem94920535.jpg"/>
+        </item>
+        <item>
+            <title><![CDATA[The changing chart: A brief history]]></title>
+            <description><![CDATA[With new rules coming into place regarding how the official UK Music Charts are calculated, we chart the history of the charts.]]></description>
+            <link>http://www.bbc.co.uk/news/uk-40525596</link>
+            <guid isPermaLink="true">http://www.bbc.co.uk/news/uk-40525596</guid>
+            <pubDate>Fri, 07 Jul 2017 00:00:14 GMT</pubDate>
+            <media:thumbnail width="976" height="549" url="http://c.files.bbci.co.uk/17EBF/production/_96838979_mediaitem96838978.jpg"/>
+        </item>
+        <item>
+            <title><![CDATA[South Park to reduce Donald Trump jokes after falling into 'trap' of mocking him]]></title>
+            <description><![CDATA[Co-creator Trey Parker says the show has fallen into the "trap" of mocking the US president every week.]]></description>
+            <link>http://www.bbc.co.uk/news/entertainment-arts-40529800</link>
+            <guid isPermaLink="true">http://www.bbc.co.uk/news/entertainment-arts-40529800</guid>
+            <pubDate>Fri, 07 Jul 2017 09:01:28 GMT</pubDate>
+            <media:thumbnail width="976" height="549" url="http://c.files.bbci.co.uk/108DC/production/_96840876_south-park-trump-shuttersto.jpg"/>
+        </item>
+        <item>
+            <title><![CDATA[The papers: Thatcher statue and business Brexit demands]]></title>
+            <description><![CDATA[Plans for a statue of Margaret Thatcher are shelved, while business leaders want a Brexit delay.]]></description>
+            <link>http://www.bbc.co.uk/news/blogs-the-papers-40527443</link>
+            <guid isPermaLink="true">http://www.bbc.co.uk/news/blogs-the-papers-40527443</guid>
+            <pubDate>Fri, 07 Jul 2017 04:41:39 GMT</pubDate>
+            <media:thumbnail width="2048" height="1152" url="http://c.files.bbci.co.uk/8203/production/_96838233_index.jpg"/>
+        </item>
+        <item>
+            <title><![CDATA[David Dimbleby's alarm interrupts Question Time]]></title>
+            <description><![CDATA[The presenter joked "it's time for bed", after his phone started ringing during the programme.]]></description>
+            <link>http://www.bbc.co.uk/news/uk-40530720</link>
+            <guid isPermaLink="true">http://www.bbc.co.uk/news/uk-40530720</guid>
+            <pubDate>Fri, 07 Jul 2017 08:48:18 GMT</pubDate>
+            <media:thumbnail width="1024" height="576" url="http://c.files.bbci.co.uk/4208/production/_96840961_p058082t.jpg"/>
+        </item>
+        <item>
+            <title><![CDATA[Centre Court replica built using 12,000 toothpicks]]></title>
+            <description><![CDATA[The model contains over 12,000 toothpicks and took 10 months to build.]]></description>
+            <link>http://www.bbc.co.uk/news/uk-england-london-40522003</link>
+            <guid isPermaLink="true">http://www.bbc.co.uk/news/uk-england-london-40522003</guid>
+            <pubDate>Thu, 06 Jul 2017 16:14:37 GMT</pubDate>
+            <media:thumbnail width="1024" height="576" url="http://c.files.bbci.co.uk/4E55/production/_96835002_p057yf87.jpg"/>
+        </item>
+        <item>
+            <title><![CDATA[The skateboarding Staffordshire bull terrier]]></title>
+            <description><![CDATA[A Staffordshire bull terrier owner says they are "no more dangerous" than other breeds of dog.]]></description>
+            <link>http://www.bbc.co.uk/news/uk-england-essex-40530620</link>
+            <guid isPermaLink="true">http://www.bbc.co.uk/news/uk-england-essex-40530620</guid>
+            <pubDate>Fri, 07 Jul 2017 08:33:12 GMT</pubDate>
+            <media:thumbnail width="1024" height="576" url="http://c.files.bbci.co.uk/39D4/production/_96840841_p05806rn.jpg"/>
+        </item>
+        <item>
+            <title><![CDATA['People call me racist for shooting grey squirrels']]></title>
+            <description><![CDATA[Andrew and Julie are killing grey squirrels to help the UK's native red squirrels.]]></description>
+            <link>http://www.bbc.co.uk/news/magazine-40522135</link>
+            <guid isPermaLink="true">http://www.bbc.co.uk/news/magazine-40522135</guid>
+            <pubDate>Fri, 07 Jul 2017 00:37:06 GMT</pubDate>
+            <media:thumbnail width="1024" height="576" url="http://c.files.bbci.co.uk/6A07/production/_96834172_p057y6c6.jpg"/>
+        </item>
+        <item>
+            <title><![CDATA[7 days quiz: What made the Duchess giggle?]]></title>
+            <description><![CDATA[7 days quiz: What made the Duchess giggle?]]></description>
+            <link>http://www.bbc.co.uk/news/magazine-40520675</link>
+            <guid isPermaLink="true">http://www.bbc.co.uk/news/magazine-40520675</guid>
+            <pubDate>Thu, 06 Jul 2017 23:53:35 GMT</pubDate>
+            <media:thumbnail width="1024" height="576" url="http://c.files.bbci.co.uk/EA4E/production/_96828995_camilla_canada_gettyimages.jpg"/>
+        </item>
+        <item>
+            <title><![CDATA[The Indian man who fought to be a belly dancer]]></title>
+            <description><![CDATA[Eshan Hilal has fought all odds to pursue his dream of being a belly dancer.]]></description>
+            <link>http://www.bbc.co.uk/news/world-asia-india-40520645</link>
+            <guid isPermaLink="true">http://www.bbc.co.uk/news/world-asia-india-40520645</guid>
+            <pubDate>Thu, 06 Jul 2017 21:29:02 GMT</pubDate>
+            <media:thumbnail width="976" height="549" url="http://c.files.bbci.co.uk/105A6/production/_96828966_p057x5cw.jpg"/>
+        </item>
+        <item>
+            <title><![CDATA[Victoria Derbyshire ]]></title>
+            <description><![CDATA[BBC coverage of latest developments]]></description>
+            <link>http://www.bbc.co.uk/news/10318089</link>
+            <guid isPermaLink="true">http://www.bbc.co.uk/news/10318089</guid>
+            <pubDate>Fri, 17 Feb 2017 09:41:12 GMT</pubDate>
+            <media:thumbnail width="2048" height="1152" url="http://news.bbcimg.co.uk/media/images/83122000/png/_83122356_globe_2048x1152.png"/>
+        </item>
+        <item>
+            <title><![CDATA[Islamist terror and the complex legal battle]]></title>
+            <description><![CDATA[The BBC has been given rare access to the CPS as it brings a mounting number of cases against Britons accused of terrorism.]]></description>
+            <link>http://www.bbc.co.uk/news/uk-40355492</link>
+            <guid isPermaLink="true">http://www.bbc.co.uk/news/uk-40355492</guid>
+            <pubDate>Fri, 07 Jul 2017 00:28:36 GMT</pubDate>
+            <media:thumbnail width="976" height="549" url="http://c.files.bbci.co.uk/939B/production/_96578773_tareenashakil.jpg"/>
+        </item>
+        <item>
+            <title><![CDATA[The former slave who gave a quilt to a queen]]></title>
+            <description><![CDATA[More than a century ago a former slave fulfilled her dream to meet Queen Victoria, taking with her a gift.]]></description>
+            <link>http://www.bbc.co.uk/news/world-africa-40500884</link>
+            <guid isPermaLink="true">http://www.bbc.co.uk/news/world-africa-40500884</guid>
+            <pubDate>Fri, 07 Jul 2017 00:10:38 GMT</pubDate>
+            <media:thumbnail width="976" height="549" url="http://c.files.bbci.co.uk/178F/production/_96813060_linedrawingofmrcredittonationalportraitgallerylondon.jpg"/>
+        </item>
+        <item>
+            <title><![CDATA[Trump and Putin: The men behind the meeting]]></title>
+            <description><![CDATA[The two leaders will go face to face for the first time. But how different are they?]]></description>
+            <link>http://www.bbc.co.uk/news/world-40522656</link>
+            <guid isPermaLink="true">http://www.bbc.co.uk/news/world-40522656</guid>
+            <pubDate>Thu, 06 Jul 2017 21:58:09 GMT</pubDate>
+            <media:thumbnail width="976" height="549" url="http://c.files.bbci.co.uk/89AB/production/_96834253_dc4ac44b-c615-4b8b-9045-29ca3704c775.jpg"/>
+        </item>
+        <item>
+            <title><![CDATA[Could new data laws end up bankrupting your company?]]></title>
+            <description><![CDATA[The EU General Data Protection Regulations (GDPR) start next year, but many firms are ill prepared.]]></description>
+            <link>http://www.bbc.co.uk/news/business-40441434</link>
+            <guid isPermaLink="true">http://www.bbc.co.uk/news/business-40441434</guid>
+            <pubDate>Thu, 06 Jul 2017 23:06:44 GMT</pubDate>
+            <media:thumbnail width="976" height="549" url="http://c.files.bbci.co.uk/10953/production/_96832976_gettyimages-517598724.jpg"/>
+        </item>
+        <item>
+            <title><![CDATA[Cheryl Yeoh: 'It was sexual harassment at the highest level']]></title>
+            <description><![CDATA[Tech entrepreneur Cheryl Yeoh on speaking out against a high profile Silicon Valley investor.]]></description>
+            <link>http://www.bbc.co.uk/news/technology-40517560</link>
+            <guid isPermaLink="true">http://www.bbc.co.uk/news/technology-40517560</guid>
+            <pubDate>Thu, 06 Jul 2017 14:29:05 GMT</pubDate>
+            <media:thumbnail width="750" height="422" url="http://c.files.bbci.co.uk/94D7/production/_96830183_mediaitem96830182.jpg"/>
+        </item>
+        <item>
+            <title><![CDATA[The deadly Spanish route attracting migrants to Europe]]></title>
+            <description><![CDATA[A migrant drowning tragedy off Spain sheds light on a worsening crisis in the Western Mediterranean.]]></description>
+            <link>http://www.bbc.co.uk/news/world-europe-40504374</link>
+            <guid isPermaLink="true">http://www.bbc.co.uk/news/world-europe-40504374</guid>
+            <pubDate>Thu, 06 Jul 2017 00:09:08 GMT</pubDate>
+            <media:thumbnail width="976" height="549" url="http://c.files.bbci.co.uk/84BD/production/_96818933_03001c60-8255-4556-8b82-fbd96366e70b.jpg"/>
+        </item>
+        <item>
+            <title><![CDATA[A mother's fight against knife crime]]></title>
+            <description><![CDATA[One mother is fighting hard to make sure more young people are protected from the dangers of knives after the death of her son.]]></description>
+            <link>http://www.bbc.co.uk/news/uk-40497070</link>
+            <guid isPermaLink="true">http://www.bbc.co.uk/news/uk-40497070</guid>
+            <pubDate>Thu, 06 Jul 2017 10:49:26 GMT</pubDate>
+            <media:thumbnail width="976" height="549" url="http://c.files.bbci.co.uk/13C4/production/_96806050_knifecrimemum.jpg"/>
+        </item>
+        <item>
+            <title><![CDATA[My big fake straight wedding]]></title>
+            <description><![CDATA[Why young gay Asians are hiding their sexuality by entering into fake marriages]]></description>
+            <link>http://www.bbc.co.uk/news/magazine-40505949</link>
+            <guid isPermaLink="true">http://www.bbc.co.uk/news/magazine-40505949</guid>
+            <pubDate>Wed, 05 Jul 2017 23:17:01 GMT</pubDate>
+            <media:thumbnail width="1024" height="576" url="http://c.files.bbci.co.uk/91BF/production/_96811373_p057vd4m.jpg"/>
+        </item>
+        <item>
+            <title><![CDATA[England v South Africa: Joe Root's unbeaten 184 rescues England]]></title>
+            <description><![CDATA[An unbeaten 184 from Joe Root in his first Test as captain rescues England on the opening day of the first Test with South Africa at Lord's.]]></description>
+            <link>http://www.bbc.co.uk/sport/cricket/40525262</link>
+            <guid isPermaLink="true">http://www.bbc.co.uk/sport/cricket/40525262</guid>
+            <pubDate>Thu, 06 Jul 2017 20:04:25 GMT</pubDate>
+            <media:thumbnail width="2048" height="1152" url="http://c.files.bbci.co.uk/BA2F/production/_96836674_joe_root_getty.jpg"/>
+        </item>
+        <item>
+            <title><![CDATA[British and Irish Lions captain Sam Warburton has 'unfinished business']]></title>
+            <description><![CDATA[British and Irish Lions captain Sam Warburton says after years of sacrifice, it comes down to the Test tour decider against New Zealand.]]></description>
+            <link>http://www.bbc.co.uk/sport/rugby-union/40525155</link>
+            <guid isPermaLink="true">http://www.bbc.co.uk/sport/rugby-union/40525155</guid>
+            <pubDate>Fri, 07 Jul 2017 05:28:22 GMT</pubDate>
+            <media:thumbnail width="2048" height="1152" url="http://c.files.bbci.co.uk/1895/production/_96839260_warburton.jpg"/>
+        </item>
+        <item>
+            <title><![CDATA[Romelu Lukaku: Man Utd 'agree £75m fee with Everton for striker']]></title>
+            <description><![CDATA[Manchester United say they have agreed a fee of around £75m for Romelu Lukaku - but Everton say no deal has been reached.]]></description>
+            <link>http://www.bbc.co.uk/sport/football/40516483</link>
+            <guid isPermaLink="true">http://www.bbc.co.uk/sport/football/40516483</guid>
+            <pubDate>Thu, 06 Jul 2017 15:17:16 GMT</pubDate>
+            <media:thumbnail width="2048" height="1152" url="http://c.files.bbci.co.uk/12A4B/production/_96836367_romelu_lukaku_reuters.jpg"/>
+        </item>
+    </channel>
+</rss>

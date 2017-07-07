@@ -12,6 +12,7 @@ import { TextInput } from './../rss/textinput'
 import { BackendChannelInfo } from './../rss/backendchannelinfo'
 
 import { BreakException } from './../libs/breakexception'
+import { FEEDS_DATABASE_LINK } from './../libs/feedsdatabaselink'
 
 @Component({
   selector: 'message-app',
@@ -42,7 +43,7 @@ export class MessageComponent /*implements OnInit, OnDestroy*/ {
   ngOnInit() {
     this.subscription = this.activateRoute.params.subscribe(params => {
       this.channelName = params['channel']
-      this.httpService.getData('assets/data/rsschannels.json').subscribe(
+      this.httpService.getData(FEEDS_DATABASE_LINK).subscribe(
         (data: Response) => {
           let channelList = data.json()
 

@@ -5,5 +5,13 @@
 
   { "name": "kommersant",
     "link": "assets/channels/kommersantnews.xml"
+  },
+  {
+    "name": "bbc",
+    "link": "assets/channels/bbcnews.xml"
+  },
+  {
+    "name": "cnn",
+    "link": "assets/channels/cnnnews.rss"
   }
 ]

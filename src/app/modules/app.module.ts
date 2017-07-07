@@ -9,11 +9,13 @@ import { AppComponent } from './../components/app.component'
 import { HomeComponent } from './../components/home.component'
 import { ChannelComponent } from './../components/channel.component'
 import { MessageComponent } from './../components/message.component'
+import { StatisticComponent } from './../components/statistic.component'
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'channel/:channel', component: ChannelComponent },
-  { path: 'channel/:channel/message/:itemId', component: MessageComponent }
+  { path: 'channel/:channel/message/:itemId', component: MessageComponent },
+  { path: 'statistic', component: StatisticComponent }
 ]
 
 @NgModule({
@@ -21,7 +23,8 @@ const appRoutes: Routes = [
     AppComponent,
     HomeComponent,
     ChannelComponent,
-    MessageComponent
+    MessageComponent,
+    StatisticComponent
   ],
   imports: [
     BrowserModule,
