@@ -10,13 +10,11 @@
 <div *ngIf="!isItemExist">
   <p>Item not found</p>
 </div>
-<div>
+<div *ngIf="isItemExist">
   <h3>{{itemTitle}}</h3>
   <p *ngIf="isItemDescriptionExist">{{itemDescription}}</p>
+  <p *ngIf="!isItemDescriptionExist">The item doesn’t have description</p>
 </div>
-<div *ngIf="!isItemDescriptionExist">
-  <p>The item doesn’t have description</p>
-</div>
-<div>
+<div *ngIf="isItemExist">
   <a href="{{itemLink}}" target="blank">Read in source</a>
 </div>

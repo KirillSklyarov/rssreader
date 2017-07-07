@@ -25,7 +25,7 @@ export class ChannelComponent implements OnInit, OnDestroy {
 
   channelInfo: BackendChannelInfo
   channel: Channel
-  channelIsExist = false
+  isChannelExist = false
   channelTitle = ""
 
   private channelName: string
@@ -42,13 +42,13 @@ export class ChannelComponent implements OnInit, OnDestroy {
         (data: Response) => {
         let channelInfoList = data.json()
         let iterations = 0
-        // Find current channel
 
+        // Find current channel
         try {
           channelInfoList.forEach(channelInfo => {
             console.log(++iterations)
             if (this.channelName == channelInfo.name) {
-              this.channelIsExist = true
+              this.isChannelExist = true
               this.channelInfo = channelInfo
               throw BreakException
             }
@@ -60,7 +60,7 @@ export class ChannelComponent implements OnInit, OnDestroy {
         }
 
         // Get channel
-        if (this.channelIsExist) {
+        if (this.isChannelExist) {
           this.httpService.getData(this.channelInfo.link).subscribe(
             (rssData: Response) => {
             let rssXml = rssData.text()

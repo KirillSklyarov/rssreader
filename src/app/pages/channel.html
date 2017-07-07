@@ -1,10 +1,10 @@
-<div *ngIf="!channelIsExist">
+<div *ngIf="!isChannelExist">
   <p>Channel not found</p>
 </div>
 <div>
   <a routerLink="/">Return to main page</a>
 </div>
-<div *ngIf="channelIsExist">
+<div *ngIf="isChannelExist">
   <h2 *ngIf="channel">Channel: {{channel.title}}</h2>
   <ul *ngIf="channel">
     <li *ngFor="let item of channel.items; let i = index">

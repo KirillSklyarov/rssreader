@@ -23,23 +23,21 @@ export class HomeComponent implements OnInit {
 
   ngOnInit () {
 
-    let homeComponent = this
-
-    // Request information about channels
     this.httpService.getData('assets/data/rsschannels.json').
     subscribe((data: Response) => {
-        homeComponent.channelsInfo = data.json()
+        this.channelsInfo = data.json()
 
         // Add channel objects to channels Array
-        homeComponent.channelsInfo.forEach((url, index) => {
+        this.channelsInfo.forEach((url, index) => {
           this.httpService.getData(this.channelsInfo[index].link).
           subscribe((rssData: Response) => {
-              let rssXml = rssData.text()
-              let channel = parseRss(rssXml, homeComponent.channelsInfo[index])
-              homeComponent.channels[index] = channel
-            });
+            let rssXml = rssData.text()
+            let channel = parseRss(rssXml, this.channelsInfo[index])
+            this.channels[index] = channel
+          });
         })
       })
+
   }
 
   isListHasElements (): boolean {
