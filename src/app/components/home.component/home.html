@@ -9,9 +9,9 @@
 
 <div *ngIf="isListHasElements()">
   <h2>List of channels</h2>
-  <ul *ngIf="channels">
+  <ul *ngIf="isChannelsLoaded">
     <li *ngFor="let channel of channels; let i = index">
-      <h3><a routerLink="channel/{{channelsInfo[i].name}}">{{channel.title}}</a> </h3>
+      <h3><a routerLink="channel/{{channelsInfo[i].name}}">{{channel?.title}}</a> </h3>
     </li>
   </ul>
 </div>

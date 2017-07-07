@@ -1,19 +1,19 @@
 import { Component, OnInit } from '@angular/core'
 import { Response } from '@angular/http'
-import { HttpService } from './../services/http.service'
+import { HttpService } from './../../services/http.service'
 
-import { Channel, parseRss } from './../rss/channel'
-import { Item } from './../rss/item'
-import { Image } from './../rss/image'
-import { TextInput } from './../rss/textinput'
-import { BackendChannelInfo } from './../rss/backendchannelinfo'
+import { Channel, parseRss } from './../../rss/channel'
+import { Item } from './../../rss/item'
+import { Image } from './../../rss/image'
+import { TextInput } from './../../rss/textinput'
+import { BackendChannelInfo } from './../../rss/backendchannelinfo'
 
-import { FEEDS_DATABASE_LINK } from './../libs/feedsdatabaselink'
+import { FEEDS_DATABASE_LINK } from './../../libs/feedsdatabaselink'
 
 @Component({
   selector: 'home-app',
-  templateUrl: './../pages/statistic.html',
-  styleUrls: ['./../styles/style.css'],
+  templateUrl: './statistic.html',
+  styleUrls: ['./../../styles/style.css'],
   providers: [HttpService]
 })
 export class StatisticComponent implements OnInit {

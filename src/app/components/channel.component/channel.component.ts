@@ -1,23 +1,23 @@
 import { Component, OnInit, OnDestroy, Input } from '@angular/core'
 import { Response } from '@angular/http'
-import { HttpService } from './../services/http.service'
+import { HttpService } from './../../services/http.service'
 
 import { ActivatedRoute} from '@angular/router'
 import { Subscription } from 'rxjs/Subscription'
 
-import { Channel, parseRss } from './../rss/channel'
-import { Item } from './../rss/item'
-import { Image } from './../rss/image'
-import { TextInput } from './../rss/textinput'
-import { BackendChannelInfo } from './../rss/backendchannelinfo'
+import { Channel, parseRss } from './../../rss/channel'
+import { Item } from './../../rss/item'
+import { Image } from './../../rss/image'
+import { TextInput } from './../../rss/textinput'
+import { BackendChannelInfo } from './../../rss/backendchannelinfo'
 
-import { BreakException } from './../libs/breakexception'
-import { FEEDS_DATABASE_LINK } from './../libs/feedsdatabaselink'
+import { BreakException } from './../../libs/breakexception'
+import { FEEDS_DATABASE_LINK } from './../../libs/feedsdatabaselink'
 
 @Component({
   selector: 'channel-app',
-  templateUrl: './../pages/channel.html',
-  styleUrls: ['./../styles/style.css'],
+  templateUrl: './channel.html',
+  styleUrls: ['./../../styles/style.css'],
   providers: [HttpService]
 })
 export class ChannelComponent implements OnInit, OnDestroy {

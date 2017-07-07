@@ -6,10 +6,14 @@ import { Routes, RouterModule } from '@angular/router'
 import { HttpService } from './../services/http.service'
 
 import { AppComponent } from './../components/app.component'
-import { HomeComponent } from './../components/home.component'
-import { ChannelComponent } from './../components/channel.component'
-import { MessageComponent } from './../components/message.component'
-import { StatisticComponent } from './../components/statistic.component'
+import { HomeComponent } from
+  './../components/home.component/home.component'
+import { ChannelComponent } from
+  './../components/channel.component/channel.component'
+import { MessageComponent } from
+  './../components/message.component/message.component'
+import { StatisticComponent } from
+  './../components/statistic.component/statistic.component'
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
