@@ -31,35 +31,35 @@ export class HomeComponent implements OnInit {
 
   ngOnInit () {
 
-    let testChannelsInfo: BackendChannelInfo[]
-    this.channelService.getData().subscribe((data) => {
-      this.testChannelsInfo = data
-      console.log('HomeComponent - testChannelsInfo (inside):', this.testChannelsInfo)
+    this.channelService.getData().subscribe((data: BackendChannelInfo[]) => {
+      this.channelsInfo = data
+      console.log('getData in HomeComponent\n', this.channelsInfo)
     })
-    console.log('HomeComponent - testChannelsInfo (outside):', this.testChannelsInfo)
 
-
-
-    // this.channelService.getChannels()
-
-    this.httpService.getData(FEEDS_DATABASE_LINK).
-    subscribe((data: Response) => {
-      this.channelsInfo = data.json()
-
-      // Add channel objects to channels Array
-      this.channelsInfo.forEach((url, index) => {
-        this.httpService.getData(this.channelsInfo[index].link).
-        subscribe((rssData: Response) => {
-          let rssXml = rssData.text()
-          let channel = parseRss(rssXml, this.channelsInfo[index])
-          this.channels[index] = channel
-
-          if (this.channelsInfo.length == this.channels.length) {
-            this.isChannelsLoaded = true
-          }
-        });
-      })
+    this.channelService.getChannels().subscribe((data: Channel[]) => {
+      this.channels = data
+      console.log('channelService in HomeComponent', this.channels)
+      this.isChannelsLoaded = true
     })
+
+    // this.httpService.getData(FEEDS_DATABASE_LINK).
+    // subscribe((data: Response) => {
+    //   this.channelsInfo = data.json()
+
+    //   // Add channel objects to channels Array
+    //   this.channelsInfo.forEach((url, index) => {
+    //     this.httpService.getData(this.channelsInfo[index].link).
+    //     subscribe((rssData: Response) => {
+    //       let rssXml = rssData.text()
+    //       let channel = parseRss(rssXml, this.channelsInfo[index])
+    //       this.channels[index] = channel
+
+    //       if (this.channelsInfo.length == this.channels.length) {
+    //         this.isChannelsLoaded = true
+    //       }
+    //     });
+    //   })
+    // })
   }
 
   isListHasElements (): boolean {

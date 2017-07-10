@@ -29,11 +29,46 @@ export class ChannelService {
     return Observable.create((observer: Observer<BackendChannelInfo[]>) => {
       this.http.get(FEEDS_DATABASE_LINK).subscribe((data: Response) => {
         this.channelsInfo = data.json()
-        console.log('getData, channelsInfo:', this.channelsInfo)
         observer.next(this.channelsInfo)
         observer.complete()
       })
     })
+  }
+
+  getChannels(): Observable<Channel[]> {
+    return Observable.create((observer: Observer<Channel[]>) => {
+      this.getData().subscribe((data: BackendChannelInfo[]) => {
+        this.channelsInfo = data
+        this.channelsInfo.forEach((channelInfo, index) => {
+          this.http.get(channelInfo.link).subscribe((data: Response) => {
+            let rawRss = data.text()
+            let channel = parseRss(rawRss, this.channelsInfo[index])
+            console.log(channel)
+            this.channels[index] = channel
+          })
+
+        })
+      })
+    })
+  }
+
+    // this.getData().subscribe((data: BackendChannelInfo[]) => {
+    //   this.channelsInfo = data
+    //   console.log('getChannels:', this.channelsInfo)
+    //   return Observable.create((observer: Observer<Channel[]>) => {
+    //     this.channelsInfo.forEach((channelInfo, index) => {
+    //       this.http.get(channelInfo.link).subscribe((data: Response) => {
+    //         let rawRss = data.text()
+    //         let channel = parseRss(rawRss, this.channelsInfo[index])
+    //         console.log(channel)
+    //         this.channels[index] = channel
+    //       })
+    //     })
+    //     console.log('getChannels:', this.channels)
+    //     observer.next(this.channels)
+    //     observer.complete()
+    //   })
+    // })
 
   /*
   getChannels(): Observable<Channel[]> {
@@ -94,6 +129,4 @@ export class ChannelService {
 
     // })
 
-
-  }
 }
