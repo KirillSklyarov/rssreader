@@ -24,10 +24,21 @@ export class HomeComponent implements OnInit {
   channelsInfo: BackendChannelInfo[] = []
   isChannelsLoaded = false
 
+  testChannelsInfo: BackendChannelInfo[] = []
+
   constructor (private httpService: HttpService,
     private channelService: ChannelService) { }
 
   ngOnInit () {
+
+    let testChannelsInfo: BackendChannelInfo[]
+    this.channelService.getData().subscribe((data) => {
+      this.testChannelsInfo = data
+      console.log('HomeComponent - testChannelsInfo (inside):', this.testChannelsInfo)
+    })
+    console.log('HomeComponent - testChannelsInfo (outside):', this.testChannelsInfo)
+
+
 
     // this.channelService.getChannels()
 
