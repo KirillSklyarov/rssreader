@@ -19,6 +19,7 @@ export class ChannelService {
 
   private channel: Channel
   private allChannels: Channel[] = []
+
   private channelInfo: BackendChannelInfo
   private allChannelsInfo: BackendChannelInfo[] = []
 
@@ -34,16 +35,19 @@ export class ChannelService {
     })
   }
 
-
-  // getChannelInfo(): Observable<BackendChannelInfo> {
-  //   return Observable.create((observer: Observer<BackendChannelInfo>) => {
-  //     this.http.get(FEEDS_DATABASE_LINK).subscribe((data: Response) => {
-  //       this.allChannelsInfo = data.json()
-  //       observer.next(this.allChannelsInfo)
-  //       observer.complete()
-  //     })
-  //   })
-  // }
+  getSingleChannelInfo(channelName): Observable<BackendChannelInfo> {
+    return Observable.create((observer: Observer<BackendChannelInfo>) => {
+      this.getAllChannelsInfo().subscribe((data: BackendChannelInfo[]) => {
+        this.allChannelsInfo = data
+        this.allChannelsInfo.forEach((channelInfo, index) => {
+          if (channelInfo.name === channelName) {
+            observer.next(channelInfo)
+            observer.complete()
+          }
+        })
+      })
+    })
+  }
 
 
   getAllChannels(): Observable<Channel[]> {
@@ -54,7 +58,6 @@ export class ChannelService {
           this.http.get(channelInfo.link).subscribe((data: Response) => {
             let rawRss = data.text()
             let channel = parseRss(rawRss, this.allChannelsInfo[index])
-            console.log(channel)
             this.allChannels[index] = channel
 
             if (index == this.allChannelsInfo.length - 1) {
@@ -67,4 +70,6 @@ export class ChannelService {
       })
     })
   }
+
+  // getSingleChannelInfo(channelName: string)
 }

@@ -20,7 +20,7 @@ import { FEEDS_DATABASE_LINK } from './../../libs/feedsdatabaselink'
 })
 export class HomeComponent implements OnInit {
 
-  channels: Channel[] = []
+  allChannels: Channel[] = []
   channelsInfo: BackendChannelInfo[] = []
   isChannelsLoaded = false
 
@@ -31,14 +31,9 @@ export class HomeComponent implements OnInit {
 
   ngOnInit () {
 
-    this.channelService.getAllChannelsInfo().subscribe((data: BackendChannelInfo[]) => {
-      this.channelsInfo = data
-      console.log('getData in HomeComponent\n', this.channelsInfo)
-    })
-
     this.channelService.getAllChannels().subscribe((data: Channel[]) => {
-      this.channels = data
-      console.log('channelService in HomeComponent', this.channels)
+      this.allChannels = data
+      console.log('channelService in HomeComponent\n', this.allChannels)
       this.isChannelsLoaded = true
     })
   }
