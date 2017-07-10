@@ -3,11 +3,11 @@
   (keypress)="($event.keyCode==13)? addChannel() : return" />
   <button>Add channel</button>
 </div>
-<div *ngIf="!isListHasElements()">
+<div *ngIf="!isChannelsLoaded">
   <p>List is empty</p>
 </div>
 
-<div *ngIf="isListHasElements()">
+<div *ngIf="isChannelsLoaded">
   <h2>List of channels</h2>
   <ul *ngIf="isChannelsLoaded">
     <li *ngFor="let channel of channels; let i = index">

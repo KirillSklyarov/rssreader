@@ -41,29 +41,5 @@ export class HomeComponent implements OnInit {
       console.log('channelService in HomeComponent', this.channels)
       this.isChannelsLoaded = true
     })
-
-    // this.httpService.getData(FEEDS_DATABASE_LINK).
-    // subscribe((data: Response) => {
-    //   this.channelsInfo = data.json()
-
-    //   // Add channel objects to channels Array
-    //   this.channelsInfo.forEach((url, index) => {
-    //     this.httpService.getData(this.channelsInfo[index].link).
-    //     subscribe((rssData: Response) => {
-    //       let rssXml = rssData.text()
-    //       let channel = parseRss(rssXml, this.channelsInfo[index])
-    //       this.channels[index] = channel
-
-    //       if (this.channelsInfo.length == this.channels.length) {
-    //         this.isChannelsLoaded = true
-    //       }
-    //     });
-    //   })
-    // })
-  }
-
-  isListHasElements (): boolean {
-    if (this.channels.length > 0) { return true }
-    return false
   }
 }
