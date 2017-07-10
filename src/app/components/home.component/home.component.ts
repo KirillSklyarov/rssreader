@@ -36,7 +36,7 @@ export class HomeComponent implements OnInit {
       console.log('getData in HomeComponent\n', this.channelsInfo)
     })
 
-    this.channelService.getChannels().subscribe((data: Channel[]) => {
+    this.channelService.getAllChannels().subscribe((data: Channel[]) => {
       this.channels = data
       console.log('channelService in HomeComponent', this.channels)
       this.isChannelsLoaded = true

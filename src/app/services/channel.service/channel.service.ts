@@ -18,35 +18,47 @@ const FEEDS_DATABASE_LINK = 'assets/data/allchannels.json'
 export class ChannelService {
 
   private channel: Channel
-  private channels: Channel[] = []
+  private allChannels: Channel[] = []
   private channelInfo: BackendChannelInfo
-  private channelsInfo: BackendChannelInfo[] = []
+  private allChannelsInfo: BackendChannelInfo[] = []
 
   constructor(private http: Http) { }
 
   getAllChannelsInfo(): Observable<BackendChannelInfo[]> {
     return Observable.create((observer: Observer<BackendChannelInfo[]>) => {
       this.http.get(FEEDS_DATABASE_LINK).subscribe((data: Response) => {
-        this.channelsInfo = data.json()
-        observer.next(this.channelsInfo)
+        this.allChannelsInfo = data.json()
+        observer.next(this.allChannelsInfo)
         observer.complete()
       })
     })
   }
 
-  getChannels(): Observable<Channel[]> {
+
+  // getChannelInfo(): Observable<BackendChannelInfo> {
+  //   return Observable.create((observer: Observer<BackendChannelInfo>) => {
+  //     this.http.get(FEEDS_DATABASE_LINK).subscribe((data: Response) => {
+  //       this.allChannelsInfo = data.json()
+  //       observer.next(this.allChannelsInfo)
+  //       observer.complete()
+  //     })
+  //   })
+  // }
+
+
+  getAllChannels(): Observable<Channel[]> {
     return Observable.create((observer: Observer<Channel[]>) => {
       this.getAllChannelsInfo().subscribe((data: BackendChannelInfo[]) => {
-        this.channelsInfo = data
-        this.channelsInfo.forEach((channelInfo, index) => {
+        this.allChannelsInfo = data
+        this.allChannelsInfo.forEach((channelInfo, index) => {
           this.http.get(channelInfo.link).subscribe((data: Response) => {
             let rawRss = data.text()
-            let channel = parseRss(rawRss, this.channelsInfo[index])
+            let channel = parseRss(rawRss, this.allChannelsInfo[index])
             console.log(channel)
-            this.channels[index] = channel
+            this.allChannels[index] = channel
 
-            if (index == this.channelsInfo.length - 1) {
-              observer.next(this.channels)
+            if (index == this.allChannelsInfo.length - 1) {
+              observer.next(this.allChannels)
               observer.complete()
             }
 
