@@ -29,8 +29,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit () {
 
-    this.channelService.getChannels()
-
+    // this.channelService.getChannels()
 
     this.httpService.getData(FEEDS_DATABASE_LINK).
     subscribe((data: Response) => {
@@ -43,11 +42,9 @@ export class HomeComponent implements OnInit {
           let rssXml = rssData.text()
           let channel = parseRss(rssXml, this.channelsInfo[index])
           this.channels[index] = channel
-          console.log('this.channelsInfo.length:', this.channelsInfo.length,
-            '\t', 'this.channels.length', this.channels.length)
+
           if (this.channelsInfo.length == this.channels.length) {
             this.isChannelsLoaded = true
-            console.log(this.isChannelsLoaded)
           }
         });
       })

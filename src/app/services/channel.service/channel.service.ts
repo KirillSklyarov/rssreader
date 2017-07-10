@@ -19,13 +19,33 @@ const FEEDS_DATABASE_LINK = 'assets/data/allchannels.json'
 export class ChannelService {
 
   private channel: Channel
-  private channels: Channel[]
+  private channels: Channel[] = []
   private channelInfo: BackendChannelInfo
-  private channelsInfo: BackendChannelInfo[]
+  private channelsInfo: BackendChannelInfo[] = []
 
   constructor(private http: Http) { }
 
   getChannels(): Observable<Channel[]> {
+
+    return Observable.create((observer: Observer<Channel[]>) => {
+
+      this.http.get(FEEDS_DATABASE_LINK).subscribe((data: Response) => {
+
+        this.channelsInfo = data.json()
+
+        this.channelsInfo.forEach((channelInfo, index) => {
+
+          this.http.get(channelInfo.link).subscribe((data: Response) => {
+            let rawRss = data.text()
+            this.channels[index] = parseRss(rawRss, channelInfo)
+          })
+        })
+
+      })
+
+    })
+
+
 
     // public getAccount(): Observable<Account> {
     //   return Observable.create((observer: Observer<Account>) => {
