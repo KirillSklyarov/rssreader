@@ -3,14 +3,11 @@ import { Response, Http } from '@angular/http'
 
 import { Observable, Observer } from 'rxjs'
 
-
 import { Channel, parseRss } from './../../rss/channel'
 import { Item } from './../../rss/item'
 import { Image } from './../../rss/image'
 import { TextInput } from './../../rss/textinput'
 import { BackendChannelInfo } from './../../rss/backendchannelinfo'
-
-import { BreakException } from './../../libs/breakexception'
 
 const FEEDS_DATABASE_LINK = 'assets/data/allchannels.json'
 
@@ -35,7 +32,7 @@ export class ChannelService {
     })
   }
 
-  getSingleChannelInfo(channelName): Observable<BackendChannelInfo> {
+  getSingleChannelInfo(channelName: string): Observable<BackendChannelInfo> {
     return Observable.create((observer: Observer<BackendChannelInfo>) => {
       this.getAllChannelsInfo().subscribe((data: BackendChannelInfo[]) => {
         this.allChannelsInfo = data
@@ -71,5 +68,20 @@ export class ChannelService {
     })
   }
 
-  // getSingleChannelInfo(channelName: string)
+  getSingleChannel(channelName: string): Observable<Channel> {
+    return Observable.create((observer: Observer<Channel>) => {
+      this.getSingleChannelInfo(channelName).
+      subscribe((data: BackendChannelInfo) => {
+        this.channelInfo = data
+        this.http.get(this.channelInfo.link).subscribe((data: Response) => {
+          let rawRss = data.text()
+          let channel = parseRss(rawRss, this.channelInfo)
+          this.channel = parseRss(rawRss, this.channelInfo)
+          observer.next(this.channel)
+          observer.complete()
+        })
+      })
+    })
+  }
+
 }

@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core'
-import { Response } from '@angular/http'
-import { HttpService } from './../../services/http.service/http.service'
 import { ChannelService } from
   './../../services/channel.service/channel.service'
 
@@ -16,21 +14,16 @@ import { FEEDS_DATABASE_LINK } from './../../libs/feedsdatabaselink'
   selector: 'home-app',
   templateUrl: './home.html',
   styleUrls: ['./../../styles/style.css'],
-  providers: [HttpService, ChannelService]
+  providers: [ChannelService]
 })
 export class HomeComponent implements OnInit {
 
   allChannels: Channel[] = []
-  channelsInfo: BackendChannelInfo[] = []
   isChannelsLoaded = false
 
-  testChannelsInfo: BackendChannelInfo[] = []
-
-  constructor (private httpService: HttpService,
-    private channelService: ChannelService) { }
+  constructor (private channelService: ChannelService) { }
 
   ngOnInit () {
-
     this.channelService.getAllChannels().subscribe((data: Channel[]) => {
       this.allChannels = data
       console.log('channelService in HomeComponent\n', this.allChannels)
