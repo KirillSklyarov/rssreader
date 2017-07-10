@@ -1,4 +1,4 @@
 export class BackendChannelInfo {
-  name: string
+  name: string;
   link: string;
 }

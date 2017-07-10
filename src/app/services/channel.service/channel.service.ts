@@ -3,13 +3,13 @@ import { Response, Http } from '@angular/http'
 
 import { Observable, Observer } from 'rxjs'
 
-import { Channel, parseRss } from './../../rss/channel'
-import { Item } from './../../rss/item'
-import { Image } from './../../rss/image'
-import { TextInput } from './../../rss/textinput'
-import { BackendChannelInfo } from './../../rss/backendchannelinfo'
+import { Channel, parseRss } from './../../rss/channel';
+import { Item } from './../../rss/item';
+import { Image } from './../../rss/image';
+import { TextInput } from './../../rss/textinput';
+import { BackendChannelInfo } from './../../rss/backendchannelinfo';
 
-const FEEDS_DATABASE_LINK = 'assets/data/allchannels.json'
+const FEEDS_DATABASE_LINK = 'assets/data/allchannels.json';
 
 @Injectable()
 export class ChannelService {
@@ -53,8 +53,8 @@ export class ChannelService {
         this.allChannelsInfo = data
         this.allChannelsInfo.forEach((channelInfo, index) => {
           this.http.get(channelInfo.link).subscribe((data: Response) => {
-            let rawRss = data.text()
-            let channel = parseRss(rawRss, this.allChannelsInfo[index])
+            const rawRss = data.text()
+            const channel = parseRss(rawRss, this.allChannelsInfo[index])
             this.allChannels[index] = channel
 
             if (index == this.allChannelsInfo.length - 1) {
@@ -74,8 +74,8 @@ export class ChannelService {
       subscribe((data: BackendChannelInfo) => {
         this.channelInfo = data
         this.http.get(this.channelInfo.link).subscribe((data: Response) => {
-          let rawRss = data.text()
-          let channel = parseRss(rawRss, this.channelInfo)
+          const rawRss = data.text()
+          const channel = parseRss(rawRss, this.channelInfo)
           this.channel = parseRss(rawRss, this.channelInfo)
           observer.next(this.channel)
           observer.complete()

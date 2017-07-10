@@ -11,7 +11,7 @@ import { TextInput } from './../../rss/textinput';
 import { BackendChannelInfo } from './../../rss/backendchannelinfo';
 
 @Component({
-  selector: 'message-app',
+  selector: 'app-message',
   templateUrl: './message.html',
   styleUrls: ['./../../styles/style.css'],
   providers: [ChannelService]
@@ -37,29 +37,29 @@ export class MessageComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.subscription = this.activateRoute.params.subscribe(params => {
-      this.channelName = params['channelName']
-      this.itemId = params['itemId']
+      this.channelName = params['channelName'];
+      this.itemId = params['itemId'];
       this.channelService.getSingleChannel(this.channelName).
       subscribe((data: Channel) => {
-        this.channel = data
-        this.isChannelExist = true
+        this.channel = data;
+        this.isChannelExist = true;
 
         if (this.isChannelExist) {
           if (this.channel.items[this.itemId]) {
-            this.isItemExist = true
+            this.isItemExist = true;
           }
 
           if (this.isItemExist) {
             if (this.channel.items[this.itemId].title) {
-              this.isItemTitleExist = true
+              this.isItemTitleExist = true;
             }
 
             if (this.channel.items[this.itemId].description) {
-              this.isItemDescriptionExist = true
+              this.isItemDescriptionExist = true;
             }
 
             if (this.channel.items[this.itemId].link) {
-              this.isItemLinkExist = true
+              this.isItemLinkExist = true;
             }
           }
 
@@ -69,9 +69,9 @@ export class MessageComponent implements OnInit, OnDestroy {
 
 
 
-      })
+      });
 
-    })
+    });
   }
 
   ngOnDestroy() {
