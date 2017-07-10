@@ -24,7 +24,7 @@ export class ChannelService {
 
   constructor(private http: Http) { }
 
-  getData(): Observable<BackendChannelInfo[]> {
+  getAllChannelsInfo(): Observable<BackendChannelInfo[]> {
     return Observable.create((observer: Observer<BackendChannelInfo[]>) => {
       this.http.get(FEEDS_DATABASE_LINK).subscribe((data: Response) => {
         this.channelsInfo = data.json()
@@ -36,7 +36,7 @@ export class ChannelService {
 
   getChannels(): Observable<Channel[]> {
     return Observable.create((observer: Observer<Channel[]>) => {
-      this.getData().subscribe((data: BackendChannelInfo[]) => {
+      this.getAllChannelsInfo().subscribe((data: BackendChannelInfo[]) => {
         this.channelsInfo = data
         this.channelsInfo.forEach((channelInfo, index) => {
           this.http.get(channelInfo.link).subscribe((data: Response) => {

@@ -31,7 +31,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit () {
 
-    this.channelService.getData().subscribe((data: BackendChannelInfo[]) => {
+    this.channelService.getAllChannelsInfo().subscribe((data: BackendChannelInfo[]) => {
       this.channelsInfo = data
       console.log('getData in HomeComponent\n', this.channelsInfo)
     })
