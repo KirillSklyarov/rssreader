@@ -1,15 +1,14 @@
-import { Component, OnInit, OnDestroy, Input } from '@angular/core'
-import { ChannelService } from
-  './../../services/channel.service/channel.service'
+import { Component, OnInit, OnDestroy, Input } from '@angular/core';
+import {ChannelService} from './../../services/channel.service/channel.service';
 
-import { ActivatedRoute} from '@angular/router'
-import { Subscription } from 'rxjs/Subscription'
+import { ActivatedRoute} from '@angular/router';
+import { Subscription } from 'rxjs/Subscription';
 
-import { Channel, parseRss } from './../../rss/channel'
-import { Item } from './../../rss/item'
-import { Image } from './../../rss/image'
-import { TextInput } from './../../rss/textinput'
-import { BackendChannelInfo } from './../../rss/backendchannelinfo'
+import { Channel, parseRss } from './../../rss/channel';
+import { Item } from './../../rss/item';
+import { Image } from './../../rss/image';
+import { TextInput } from './../../rss/textinput';
+import { BackendChannelInfo } from './../../rss/backendchannelinfo';
 
 @Component({
   selector: 'message-app',
@@ -19,21 +18,21 @@ import { BackendChannelInfo } from './../../rss/backendchannelinfo'
 })
 export class MessageComponent implements OnInit, OnDestroy {
 
-  private channelName: string
-  private itemId: number
+  private channelName: string;
+  private itemId: number;
 
-  private channel: Channel
+  private channel: Channel;
 
-  private isChannelExist = false
-  private isItemExist = false
-  private isItemTitleExist = false
-  private isItemDescriptionExist = false
-  private isItemLinkExist = false
+  private isChannelExist = false;
+  private isItemExist = false;
+  private isItemTitleExist = false;
+  private isItemDescriptionExist = false;
+  private isItemLinkExist = false;
 
   private subscription: Subscription;
 
   constructor(private channelService: ChannelService,
-    private activateRoute: ActivatedRoute){
+    private activateRoute: ActivatedRoute) {
   }
 
   ngOnInit() {
@@ -45,28 +44,37 @@ export class MessageComponent implements OnInit, OnDestroy {
         this.channel = data
         this.isChannelExist = true
 
-        if (this.channel.items[this.itemId]) {
-          this.isItemExist = true
+        if (this.isChannelExist) {
+          if (this.channel.items[this.itemId]) {
+            this.isItemExist = true
+          }
+
+          if (this.isItemExist) {
+            if (this.channel.items[this.itemId].title) {
+              this.isItemTitleExist = true
+            }
+
+            if (this.channel.items[this.itemId].description) {
+              this.isItemDescriptionExist = true
+            }
+
+            if (this.channel.items[this.itemId].link) {
+              this.isItemLinkExist = true
+            }
+          }
+
+
+
         }
 
-        if (this.channel.items[this.itemId].title) {
-          this.isItemTitleExist = true
-        }
 
-        if (this.channel.items[this.itemId].description) {
-          this.isItemDescriptionExist = true
-        }
-
-        if (this.channel.items[this.itemId].link) {
-          this.isItemLinkExist = true
-        }
 
       })
 
     })
   }
 
-  ngOnDestroy(){
+  ngOnDestroy() {
     this.subscription.unsubscribe();
   }
 }

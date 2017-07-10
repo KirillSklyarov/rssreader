@@ -1,8 +1,3 @@
-<div [ngClass]="{invisible:true}">
-  <input type="text" [(ngModel)]="channel"
-  (keypress)="($event.keyCode==13)? addChannel() : return" />
-  <button>Add channel</button>
-</div>
 <div *ngIf="!areChannelsLoaded">
   <p>List is empty</p>
 </div>
