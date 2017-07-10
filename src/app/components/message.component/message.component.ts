@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy, Input } from '@angular/core'
-import { Response } from '@angular/http'
-import { HttpService } from './../../services/http.service/http.service'
+import { ChannelService } from
+  './../../services/channel.service/channel.service'
 
 import { ActivatedRoute} from '@angular/router'
 import { Subscription } from 'rxjs/Subscription'
@@ -11,82 +11,62 @@ import { Image } from './../../rss/image'
 import { TextInput } from './../../rss/textinput'
 import { BackendChannelInfo } from './../../rss/backendchannelinfo'
 
-import { BreakException } from './../../libs/breakexception'
-import { FEEDS_DATABASE_LINK } from './../../libs/feedsdatabaselink'
-
 @Component({
   selector: 'message-app',
   templateUrl: './message.html',
   styleUrls: ['./../../styles/style.css'],
-  providers: [HttpService]
+  providers: [ChannelService]
 })
-export class MessageComponent /*implements OnInit, OnDestroy*/ {
+export class MessageComponent implements OnInit, OnDestroy {
 
-  channelInfo: BackendChannelInfo
-  channel: Channel
-  channelName: string
-  itemId: number
-  isItemExist = false
-  isItemDescriptionExist = false
-  itemTitle = ''
-  itemDescription = ''
-  itemLink = ''
-  channelIsExist = false
-  messageIsExist = false
+  private channelName: string
+  private itemId: number
+
+  private channel: Channel
+
+  private isChannelExist = false
+  private isItemExist = false
+  private isItemTitleExist = false
+  private isItemDescriptionExist = false
+  private isItemLinkExist = false
 
   private subscription: Subscription;
 
-  constructor(private httpService: HttpService,
+  constructor(private channelService: ChannelService,
     private activateRoute: ActivatedRoute){
   }
 
   ngOnInit() {
     this.subscription = this.activateRoute.params.subscribe(params => {
-      this.channelName = params['channel']
-      this.httpService.getData(FEEDS_DATABASE_LINK).subscribe(
-        (data: Response) => {
-          let channelList = data.json()
+      this.channelName = params['channelName']
+      this.itemId = params['itemId']
+      this.channelService.getSingleChannel(this.channelName).
+      subscribe((data: Channel) => {
+        this.channel = data
+        this.isChannelExist = true
 
-          try {
-            channelList.forEach(channelInfo => {
-              if (this.channelName == channelInfo.name) {
-                this.channelIsExist = true
-                this.channelInfo = channelInfo
-                throw BreakException
-              }
-            })
-          } catch(error) {
-            if (error !== BreakException) {
-              throw error
-            }
-          }
-
-          if (this.channelIsExist) {
-            this.subscription = this.activateRoute.params.subscribe(params => {
-              this.itemId = Number(params['itemId'])
-              this.httpService.getData(this.channelInfo.link).subscribe(
-                (rssData: Response) => {
-                  let rssXml = rssData.text()
-                  this.channel = parseRss(rssXml, this.channelInfo)
-                  console.log(this.channel.items[this.itemId])
-                  if (this.channel.items[this.itemId]) {
-                    this.isItemExist = true
-                    this.itemTitle = this.channel.items[this.itemId].title
-                    this.itemLink = this.channel.items[this.itemId].link
-                    if (this.channel.items[this.itemId].description) {
-                      this.isItemDescriptionExist = true
-                      this.itemDescription = this.channel.items[this.itemId].
-                      description
-                    }
-                  } else {
-                    console.error('Item not found')
-                  }
-                }
-              )
-            })
-          }
+        if (this.channel.items[this.itemId]) {
+          this.isItemExist = true
         }
-      )
+
+        if (this.channel.items[this.itemId].title) {
+          this.isItemTitleExist = true
+        }
+
+        if (this.channel.items[this.itemId].description) {
+          this.isItemDescriptionExist = true
+        }
+
+        if (this.channel.items[this.itemId].link) {
+          this.isItemLinkExist = true
+        }
+
+      })
+
     })
+  }
+
+  ngOnDestroy(){
+    this.subscription.unsubscribe();
   }
 }

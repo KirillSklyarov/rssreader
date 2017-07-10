@@ -19,7 +19,7 @@ import { StatisticComponent } from
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'channel/:channel', component: ChannelComponent },
-  { path: 'channel/:channel/message/:itemId', component: MessageComponent },
+  { path: 'channel/:channelName/message/:itemId', component: MessageComponent },
   { path: 'statistic', component: StatisticComponent }
 ]
 
