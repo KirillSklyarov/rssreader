@@ -1,77 +1,43 @@
-import { Component, OnInit, OnDestroy, Input } from '@angular/core'
-import { Response } from '@angular/http'
-import { HttpService } from './../../services/http.service/http.service'
+import { Component, OnInit, OnDestroy } from '@angular/core'
+import { ChannelService } from
+  './../../services/channel.service/channel.service'
 
 import { ActivatedRoute} from '@angular/router'
 import { Subscription } from 'rxjs/Subscription'
 
-import { Channel, parseRss } from './../../rss/channel'
+import { Channel } from './../../rss/channel'
 import { Item } from './../../rss/item'
 import { Image } from './../../rss/image'
 import { TextInput } from './../../rss/textinput'
 import { BackendChannelInfo } from './../../rss/backendchannelinfo'
 
-import { BreakException } from './../../libs/breakexception'
-import { FEEDS_DATABASE_LINK } from './../../libs/feedsdatabaselink'
-
 @Component({
   selector: 'channel-app',
   templateUrl: './channel.html',
   styleUrls: ['./../../styles/style.css'],
-  providers: [HttpService]
+  providers: [ChannelService]
 })
 export class ChannelComponent implements OnInit, OnDestroy {
 
-  channelUrl: string
-
-  channelInfo: BackendChannelInfo
-  channel: Channel
-  isChannelExist = false
-  channelTitle = ""
-
+  private channel: Channel
+  private isChannelExist = false
+  private channelTitle = ""
   private channelName: string
   private subscription: Subscription;
 
-  constructor(private httpService: HttpService,
+  constructor(private channelService: ChannelService,
     private activateRoute: ActivatedRoute){
   }
 
   ngOnInit() {
     this.subscription = this.activateRoute.params.subscribe(params => {
       this.channelName = params['channel']
-      this.httpService.getData(FEEDS_DATABASE_LINK).subscribe(
-        (data: Response) => {
-        let channelInfoList = data.json()
-        let iterations = 0
-
-        // Find current channel
-        try {
-          channelInfoList.forEach(channelInfo => {
-            console.log(++iterations)
-            if (this.channelName == channelInfo.name) {
-              this.isChannelExist = true
-              this.channelInfo = channelInfo
-              throw BreakException
-            }
-          })
-        } catch(error) {
-          if (error !== BreakException) {
-            throw error
-          }
-        }
-
-        // Get channel
-        if (this.isChannelExist) {
-          this.httpService.getData(this.channelInfo.link).subscribe(
-            (rssData: Response) => {
-            let rssXml = rssData.text()
-            this.channel = parseRss(rssXml, this.channelInfo)
-            // console.log(this.channel.title)
-            // console.log(this.channel)
-            this.channelTitle = this.channel.title
-          })
-        } else {
-          console.error('Channel not found')
+      this.channelService.getSingleChannel(this.channelName).
+      subscribe((data: Channel) => {
+        this.channel = data
+        this.isChannelExist = true
+        if (this.channel.title) {
+          this.channelTitle = this.channel.title
         }
       })
     })
