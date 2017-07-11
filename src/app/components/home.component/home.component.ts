@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import {ChannelService} from './../../services/channel.service/channel.service';
 
-import { Channel } from './../../rss/channel';
-import { Item } from './../../rss/item';
-import { Image } from './../../rss/image';
-import { TextInput } from './../../rss/textinput';
-import { BackendChannelInfo } from './../../rss/backendchannelinfo';
+import { Channel } from './../../libs/rss/channel';
+import { Item } from './../../libs/rss/item';
+import { Image } from './../../libs/rss/image';
+import { TextInput } from './../../libs/rss/textinput';
+import { BackendChannelInfo } from './../../libs/rss/backendchannelinfo';
 
 @Component({
   selector: 'app-home',

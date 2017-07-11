@@ -3,11 +3,11 @@ import { Response, Http } from '@angular/http';
 
 import { Observable, Observer } from 'rxjs';
 
-import { Channel, parseRss } from './../../rss/channel';
-import { Item } from './../../rss/item';
-import { Image } from './../../rss/image';
-import { TextInput } from './../../rss/textinput';
-import { BackendChannelInfo } from './../../rss/backendchannelinfo';
+import { Channel, parseRss } from './../../libs/rss/channel';
+import { Item } from './../../libs/rss/item';
+import { Image } from './../../libs/rss/image';
+import { TextInput } from './../../libs/rss/textinput';
+import { BackendChannelInfo } from './../../libs/rss/backendchannelinfo';
 
 const FEEDS_DATABASE_LINK = 'assets/data/allchannels.json';
 
