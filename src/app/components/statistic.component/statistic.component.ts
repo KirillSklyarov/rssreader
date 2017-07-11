@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 import { Channel } from './../../rss/channel';
 import { Item } from './../../rss/item';
@@ -14,12 +14,28 @@ import { BackendChannelInfo } from './../../rss/backendchannelinfo';
 })
 export class StatisticComponent implements OnInit {
 
-  channels: Channel[] = [];
+  @Input() currentChannel: Channel;
+  @Input() allChannels: Channel[];
+  @Input() currentItemDescription: string;
+
+  @Input() selector: string;
+
+  numberOfAuthors = 0
+  authors: string[] = []
 
   constructor () { }
 
   ngOnInit () {
-
-
+    console.log('selector:', this.selector)
+    if (this.selector === 'ChannelComponent') {
+      console.log('selector:', this.selector)
+      this.currentChannel.items.forEach(item => {
+        if (item.author) { // Check if item.author is exist
+          if (this.authors.indexOf(item.author) == -1) {
+            this.numberOfAuthors += 1;
+          }
+        }
+      });
+    }
   }
 }

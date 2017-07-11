@@ -1,6 +1,16 @@
-<div>
-  <a routerLink="/">Return to main page</a>
-</div>
-<div>
-  
-</div>
+<aside>
+  <h2>Statistic</h2>
+  <div *ngIf="selector === 'HomeComponent'">
+    <p>Number of channels: {{allChannels.length}}</p>
+  </div>
+
+  <div *ngIf="selector === 'ChannelComponent'">
+    <p>ChannelComponent</p>
+    <p>Numbers of channels: {{currentChannel.items.length}}</p>
+    <p>number of authors: {{numberOfAuthors}}</p>
+  </div>
+
+  <div *ngIf="selector === 'MessageComponent'">
+    <p>MessageComponent</p>
+  </div>
+</aside>

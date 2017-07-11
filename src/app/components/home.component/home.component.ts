@@ -15,15 +15,15 @@ import { BackendChannelInfo } from './../../rss/backendchannelinfo';
 })
 export class HomeComponent implements OnInit {
 
-  allChannels: Channel[] = [];
-  areChannelsLoaded = false;
+  allChannels: Channel[];
+  areChannelsLoaded: boolean;
 
   constructor (private channelService: ChannelService) { }
 
   ngOnInit () {
+    this.areChannelsLoaded = false;
     this.channelService.getAllChannels().subscribe((data: Channel[]) => {
       this.allChannels = data;
-      console.log('channelService in HomeComponent\n', this.allChannels);
       this.areChannelsLoaded = true;
     });
   }

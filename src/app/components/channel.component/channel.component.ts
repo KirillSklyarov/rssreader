@@ -30,7 +30,7 @@ export class ChannelComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.subscription = this.activateRoute.params.subscribe(params => {
-      this.channelName = params['channel'];
+      this.channelName = params['channelName'];
       this.channelService.getSingleChannel(this.channelName).
       subscribe((data: Channel) => {
         this.channel = data;

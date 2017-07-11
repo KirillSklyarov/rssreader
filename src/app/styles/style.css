@@ -1,3 +1,4 @@
-.invisible {
-  display: none;
+.statistic {
+  float: right;
+  width: 35%;
 }

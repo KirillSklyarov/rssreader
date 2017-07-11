@@ -1,3 +1,9 @@
+<div *ngIf="isChannelExist" class="statistic">
+  <h2>Statistic in ChannelComponent</h2>
+  <app-statistic [currentChannel] = "channel" selector = "'ChannelComponent'">
+  </app-statistic>
+</div>
+
 <div *ngIf="!isChannelExist">
   <p>Channel not found</p>
 </div>

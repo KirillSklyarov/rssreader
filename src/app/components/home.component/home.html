@@ -1,3 +1,9 @@
+<div *ngIf="areChannelsLoaded" class="statistic">
+  <h2>Statistic in HomeComponent</h2>
+  <app-statistic [allChannels] = "allChannels" [selector] = "'HomeComponent'">
+  </app-statistic>
+</div>
+
 <div *ngIf="!areChannelsLoaded">
   <p>List is empty</p>
 </div>
@@ -12,8 +18,4 @@
       </h3>
     </li>
   </ul>
-</div>
-
-<div>
-
 </div>
