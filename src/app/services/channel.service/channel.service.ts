@@ -24,8 +24,8 @@ export class ChannelService {
 
   getAllChannelsInfo(): Observable<BackendChannelInfo[]> {
     return Observable.create((observer: Observer<BackendChannelInfo[]>) => {
-      this.http.get(FEEDS_DATABASE_LINK).subscribe((data: Response) => {
-        this.allChannelsInfo = data.json();
+      this.http.get(FEEDS_DATABASE_LINK).subscribe((channelsData: Response) => {
+        this.allChannelsInfo = channelsData.json();
         observer.next(this.allChannelsInfo);
         observer.complete();
       });
@@ -34,8 +34,9 @@ export class ChannelService {
 
   getSingleChannelInfo(channelName: string): Observable<BackendChannelInfo> {
     return Observable.create((observer: Observer<BackendChannelInfo>) => {
-      this.getAllChannelsInfo().subscribe((data: BackendChannelInfo[]) => {
-        this.allChannelsInfo = data;
+      this.getAllChannelsInfo().
+      subscribe((channelsInfo: BackendChannelInfo[]) => {
+        this.allChannelsInfo = channelsInfo;
         this.allChannelsInfo.forEach((channelInfo, index) => {
           if (channelInfo.name === channelName) {
             observer.next(channelInfo);
@@ -49,11 +50,12 @@ export class ChannelService {
 
   getAllChannels(): Observable<Channel[]> {
     return Observable.create((observer: Observer<Channel[]>) => {
-      this.getAllChannelsInfo().subscribe((data: BackendChannelInfo[]) => {
-        this.allChannelsInfo = data;
+      this.getAllChannelsInfo().
+      subscribe((channelsInfo: BackendChannelInfo[]) => {
+        this.allChannelsInfo = channelsInfo;
         this.allChannelsInfo.forEach((channelInfo, index) => {
-          this.http.get(channelInfo.link).subscribe((data: Response) => {
-            const rawRss = data.text();
+          this.http.get(channelInfo.link).subscribe((rss: Response) => {
+            const rawRss = rss.text();
             const channel = parseRss(rawRss, this.allChannelsInfo[index]);
             this.allChannels[index] = channel;
 
@@ -71,10 +73,10 @@ export class ChannelService {
   getSingleChannel(channelName: string): Observable<Channel> {
     return Observable.create((observer: Observer<Channel>) => {
       this.getSingleChannelInfo(channelName).
-      subscribe((data: BackendChannelInfo) => {
-        this.channelInfo = data;
-        this.http.get(this.channelInfo.link).subscribe((data: Response) => {
-          const rawRss = data.text();
+      subscribe((channelInfo: BackendChannelInfo) => {
+        this.channelInfo = channelInfo;
+        this.http.get(this.channelInfo.link).subscribe((rss: Response) => {
+          const rawRss = rss.text();
           const channel = parseRss(rawRss, this.channelInfo);
           this.channel = parseRss(rawRss, this.channelInfo);
           observer.next(this.channel);
@@ -83,5 +85,4 @@ export class ChannelService {
       });
     });
   }
-
 }
