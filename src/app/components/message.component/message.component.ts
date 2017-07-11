@@ -18,10 +18,10 @@ import { BackendChannelInfo } from './../../libs/rss/backendchannelinfo';
 })
 export class MessageComponent implements OnInit, OnDestroy {
 
-  private channelName: string;
+  channelName: string;
   private itemId: number;
 
-  private channel: Channel;
+  channel: Channel;
 
   private isChannelExist = false;
   private isItemExist = false;
@@ -62,15 +62,8 @@ export class MessageComponent implements OnInit, OnDestroy {
               this.isItemLinkExist = true;
             }
           }
-
-
-
         }
-
-
-
       });
-
     });
   }
 

@@ -5,12 +5,13 @@
   [selector] = "'MessageComponent'"></app-statistic>
 </div>
 
-<div>
-  <a routerLink="/">Return to main page</a>
-</div>
-<div>
-  <a routerLink="../../">Return to channel page</a>
-</div>
+<nav>
+  <ul>
+    <li><a routerLink="/">Home</a></li>
+    <li><a *ngIf="isChannelExist" routerLink="/channel/{{channelName}}">{{channel.title}}</a></li>
+    <li>Message</li>
+  </ul>
+</nav>
 
 <div *ngIf="!isChannelExist">
   <p>Channel not found</p>

@@ -1,17 +1,20 @@
 <div *ngIf="isChannelExist" class="statistic">
-  <h2>Statistic in ChannelComponent</h2>
   <app-statistic [currentChannel] = "channel" [selector] = "'ChannelComponent'">
   </app-statistic>
 </div>
 
+<nav>
+  <ul>
+    <li><a routerLink="/">Home</a></li>
+    <li *ngIf="isChannelExist">{{channel.title}}</li>
+  </ul>
+</nav>
+
 <div *ngIf="!isChannelExist">
   <p>Channel not found</p>
 </div>
-<div>
-  <a routerLink="/">Return to main page</a>
-</div>
+
 <div *ngIf="isChannelExist">
-  <h2 *ngIf="channel">Channel: {{channel.title}}</h2>
   <ul *ngIf="channel">
     <li *ngFor="let item of channel.items; let i = index">
       <a routerLink="message/{{i}}">{{item.title}}</a>

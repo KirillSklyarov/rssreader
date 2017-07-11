@@ -31,7 +31,6 @@ export class StatisticComponent implements OnInit {
   constructor () { }
 
   ngOnInit () {
-    console.log('Statistic selector:', this.selector);
     if (this.selector === 'ChannelComponent') {
       this.currentChannel.items.forEach(item => {
         if (item.author) { // Check if item.author is exist
@@ -43,12 +42,8 @@ export class StatisticComponent implements OnInit {
     } else if (this.selector === 'MessageComponent') {
       const regexp = new RegExp(/[^a-z]/gmi);
 
-      // let quantityOfCharA = this.itemDescription.match(regexp).length;
-      // console.log(quantityOfCharA);
-
       this.allLatinChars = this.itemDescription.replace(regexp, '').
       toLowerCase();
-      console.log(this.allLatinChars);
 
       let currentChar: string;
       let currentRegExp: RegExp;
@@ -65,10 +60,6 @@ export class StatisticComponent implements OnInit {
             throw error;
           }
         }
-      }
-
-      for (let char in this.quantityOfChars) {
-        console.log(char, '-', this.quantityOfChars[char]);
       }
     }
   }

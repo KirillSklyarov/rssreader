@@ -1,9 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-// import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { Routes, RouterModule } from '@angular/router';
 import { ChannelService } from './../services/channel.service/channel.service';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 import { AppComponent } from './../components/app.component';
 import { HomeComponent } from './../components/home.component/home.component';
@@ -27,7 +27,7 @@ const appRoutes: Routes = [
   ],
   imports: [
     BrowserModule,
-    // FormsModule,
+    BrowserAnimationsModule,
     HttpModule,
     RouterModule.forRoot(appRoutes)
   ],
