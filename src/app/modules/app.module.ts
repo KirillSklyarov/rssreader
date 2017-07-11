@@ -1,9 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+// import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { Routes, RouterModule } from '@angular/router';
-// import { HttpService } from './../services/http.service/http.service';
 import { ChannelService } from './../services/channel.service/channel.service';
 
 import { AppComponent } from './../components/app.component';
@@ -28,11 +27,11 @@ const appRoutes: Routes = [
   ],
   imports: [
     BrowserModule,
-    FormsModule,
+    // FormsModule,
     HttpModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [/*HttpService, */ChannelService],
+  providers: [ChannelService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

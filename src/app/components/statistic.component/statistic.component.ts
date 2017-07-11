@@ -16,19 +16,21 @@ export class StatisticComponent implements OnInit {
 
   @Input() currentChannel: Channel;
   @Input() allChannels: Channel[];
-  @Input() currentItemDescription: string;
+  @Input() itemDescription: string;
 
   @Input() selector: string;
 
-  numberOfAuthors = 0
-  authors: string[] = []
+  numberOfAuthors = 0;
+  authors: string[] = [];
+
+  allLatinCharacters: string = '';
+
 
   constructor () { }
 
   ngOnInit () {
-    console.log('selector:', this.selector)
+    console.log('Statistic selector:', this.selector)
     if (this.selector === 'ChannelComponent') {
-      console.log('selector:', this.selector)
       this.currentChannel.items.forEach(item => {
         if (item.author) { // Check if item.author is exist
           if (this.authors.indexOf(item.author) == -1) {
@@ -36,6 +38,12 @@ export class StatisticComponent implements OnInit {
           }
         }
       });
+    } else if (this.selector === 'MessageComponent') {
+      const regexp = new RegExp(/[^a-zA-Z]/gm);
+      this.allLatinCharacters = this.itemDescription.replace(regexp, '').
+      toLowerCase()
+      console.log(this.allLatinCharacters)
+
     }
   }
 }

@@ -1,5 +1,8 @@
-<div *ngIf="areChannelsLoaded" class="statistic">
-  <app-statistic></app-statistic>
+<div *ngIf="isChannelExist && isItemExist" class="statistic">
+  <app-statistic
+  [itemDescription] = "channel.items[itemId].description ?
+  channel.items[itemId].description : ''"
+  [selector] = "'MessageComponent'"></app-statistic>
 </div>
 
 <div>
