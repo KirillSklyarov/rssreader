@@ -9,7 +9,10 @@ import { AppComponent } from './../components/app.component';
 import { HomeComponent } from './../components/home.component/home.component';
 import { ChannelComponent } from './../components/channel.component/channel.component';
 import { MessageComponent } from './../components/message.component/message.component';
-import { StatisticComponent } from './../components/statistic.component/statistic.component';
+
+import { HomeStatisticComponent } from './../components/home.component/home-statistic.component';
+import { ChannelStatisticComponent } from './../components/channel.component/channel-statistic.component';
+import { MessageStatisticComponent } from './../components/message.component/message-statistic.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
@@ -23,7 +26,9 @@ const appRoutes: Routes = [
     HomeComponent,
     ChannelComponent,
     MessageComponent,
-    StatisticComponent
+    HomeStatisticComponent,
+    ChannelStatisticComponent,
+    MessageStatisticComponent
   ],
   imports: [
     BrowserModule,
