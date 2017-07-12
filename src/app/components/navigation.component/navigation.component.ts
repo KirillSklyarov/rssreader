@@ -8,6 +8,7 @@ import { Component, Input } from '@angular/core';
 export class NavigationComponent {
   @Input() navigationLevel: number;
   @Input() channelName: string;
+  @Input() itemId: number;
   @Input() isChannelExist: boolean;
   @Input() isItemExist: boolean;
 }

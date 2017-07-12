@@ -3,15 +3,16 @@
   </channel-statistic>
 </div>
 
-<nav *ngIf="isChannelExist">
+<nav>
   <app-navigation
-    [isChannelExist]="isChannelExist"
-    [navigationLevel]="1">
+    [navigationLevel] = "1"
+    [isChannelExist] = "isChannelExist"
+    [channelName] = "channelName">
   </app-navigation>
 </nav>
 
 <section>
-  <div *ngIf="isChannelExist; then showChannelItems; else channelNotFoung"></div>
+  <div *ngIf="isChannelExist; then showChannelItems; else channelNotFound"></div>
   <ng-template #showChannelItems>
     <header><h2>{{channel.title}}</h2></header>
     <div>
@@ -22,7 +23,7 @@
       </ul>
     </div>
   </ng-template>
-  <ng-template #channelNotFoung>
+  <ng-template #channelNotFound>
     <div><p>Channel not found</p></div>
   </ng-template>
 </section>

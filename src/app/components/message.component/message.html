@@ -4,12 +4,13 @@
   channel.items[itemId].description : ''"></message-statistic>
 </div>
 
-<nav *ngIf="isChannelExist">
+<nav>
   <app-navigation
-    [isChannelExist]="isChannelExist"
-    [isItemExist]="isItemExist"
-    [navigationLevel]="2"
-    [channelName]="channel.backendChannelInfo.name">
+    [isChannelExist] = "isChannelExist"
+    [isItemExist] = "isItemExist"
+    [navigationLevel] = "2"
+    [channelName] = "channelName"
+    [itemId] = "itemId">
   </app-navigation>
 </nav>
 

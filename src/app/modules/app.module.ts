@@ -17,6 +17,7 @@ import { MessageStatisticComponent } from './../components/message.component/mes
 import { NavigationComponent } from './../components/navigation.component/navigation.component';
 
 import {MdListModule} from '@angular/material';
+import {MdTabsModule} from '@angular/material';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
@@ -41,6 +42,7 @@ const appRoutes: Routes = [
     BrowserAnimationsModule,
     HttpModule,
     MdListModule,
+    MdTabsModule,
     RouterModule.forRoot(appRoutes)
   ],
   providers: [ChannelService],
