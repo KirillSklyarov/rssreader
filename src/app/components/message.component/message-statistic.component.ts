@@ -16,17 +16,11 @@ import { QuantityOfChars } from './../../libs/quantity-of-chars';
 })
 export class MessageStatisticComponent implements OnInit {
 
-  @Input() currentChannel: Channel;
-  @Input() allChannels: Channel[];
   @Input() itemDescription: string;
-
-  @Input() selector: string;
-
-  numberOfAuthors = 0;
-  authors: string[] = [];
-
   allLatinChars = '';
+  allLatinCharsLength: number;
   quantityOfChars: QuantityOfChars[] = []
+
 
   constructor () { }
 
@@ -34,6 +28,7 @@ export class MessageStatisticComponent implements OnInit {
 
     this.allLatinChars = this.itemDescription.replace(/[^a-z]/gmi, '').
     toLowerCase();
+    this.allLatinCharsLength = this.allLatinChars.length;
 
     if (this.allLatinChars) {
       let currentChar: string;

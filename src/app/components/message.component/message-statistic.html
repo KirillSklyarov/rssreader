@@ -13,7 +13,10 @@
           </tr>
         </thead>
         <tbody>
-
+          <tr *ngFor="let quantityOfChar of quantityOfChars">
+            <td>{{quantityOfChar.char}}</td>
+            <td>{{(quantityOfChar.quantity/allLatinCharsLength*100).toFixed(1)}}</td>
+          </tr>
         </tbody>
       </table>
     </div>
