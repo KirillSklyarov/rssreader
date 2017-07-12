@@ -26,30 +26,30 @@ export class MessageStatisticComponent implements OnInit {
   authors: string[] = [];
 
   allLatinChars = '';
-  quantityOfChars: QuantityOfChars = new QuantityOfChars();
+  quantityOfChars: QuantityOfChars[] = []
 
   constructor () { }
 
   ngOnInit () {
 
-    const regexp = new RegExp(/[^a-z]/gmi);
-
-    this.allLatinChars = this.itemDescription.replace(regexp, '').
+    this.allLatinChars = this.itemDescription.replace(/[^a-z]/gmi, '').
     toLowerCase();
 
-    let currentChar: string;
-    let currentRegExp: RegExp;
-    let currentQuantity: string;
-    for (let asciiCharCode = 97; asciiCharCode <= 122; asciiCharCode++) {
-      currentChar = String.fromCharCode(asciiCharCode);
-      currentRegExp = new RegExp(currentChar, 'g');
+    if (this.allLatinChars) {
+      let currentChar: string;
+      let currentRegExp: RegExp;
+      let currentQuantity: string;
+      for (let asciiCharCode = 97; asciiCharCode <= 122; asciiCharCode++) {
+        currentChar = String.fromCharCode(asciiCharCode);
+        currentRegExp = new RegExp(currentChar, 'g');
 
-      try {
-        this.quantityOfChars[currentChar] =
-          this.allLatinChars.match(currentRegExp).length;
-      } catch (error) {
-        if (!(error.name === 'TypeError')) {
-          throw error;
+        try {
+          this.quantityOfChars.push(new QuantityOfChars(currentChar,
+            this.allLatinChars.match(currentRegExp).length));
+        } catch (error) {
+          if (!(error.name === 'TypeError')) {
+            throw error;
+          }
         }
       }
     }

@@ -3,24 +3,29 @@
   </home-statistic>
 </div>
 
-<nav>
-  <ul>
-    <li>Home</li>
-  </ul>
-</nav>
+<section>
+  <nav>
+    <ul>
+      <li>Home</li>
+    </ul>
+  </nav>
 
-<div *ngIf="!areChannelsLoaded">
-  <p>List is empty</p>
-</div>
+  <header><h2>List of channels</h2></header>
 
-<div *ngIf="areChannelsLoaded">
-  <h2>List of channels</h2>
-  <ul *ngIf="areChannelsLoaded">
-    <li *ngFor="let channel of allChannels; let i = index">
-      <h3><a routerLink="channel/{{channel.backendChannelInfo.name}}">
-        {{channel.title}}
-        </a>
-      </h3>
-    </li>
-  </ul>
-</div>
+  <div *ngIf="areChannelsLoaded; then showChannelList; else emptyChannelList"></div>
+  <ng-template #showChannelList>
+    <div>
+      <ul>
+        <li *ngFor="let channel of allChannels; let i = index">
+          <h3><a routerLink="channel/{{channel.backendChannelInfo.name}}">
+            {{channel.title}}
+            </a>
+          </h3>
+        </li>
+      </ul>
+    </div>
+  </ng-template>
+  <ng-template #emptyChannelList>
+    <div><p>List is empty</p></div>
+  </ng-template>
+</section>

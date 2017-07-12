@@ -1,12 +1,27 @@
 <aside>
   <h2>Statistic</h2>
 
-  <div>
-    <h3>Latin characters</h3>
-    <ul>
-      <li>
+  <div *ngIf="allLatinChars; then showLatinChars; else noLatinChars"></div>
+  <ng-template #showLatinChars>
+    <div>
+      <h3>Latin characters</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Char</th>
+            <th>%</th>
+          </tr>
+        </thead>
+        <tbody>
 
-      </li>
-    </ul>
-  </div>
+        </tbody>
+      </table>
+    </div>
+  </ng-template>
+  <ng-template #noLatinChars>
+    <div>
+      <p>The message has no latin characters</p>
+    </div>
+  </ng-template>
+
 </aside>

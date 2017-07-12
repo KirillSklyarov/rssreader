@@ -4,31 +4,62 @@
   channel.items[itemId].description : ''"></message-statistic>
 </div>
 
+
 <nav>
   <ul>
     <li><a routerLink="/">Home</a></li>
-    <li><a *ngIf="isChannelExist" routerLink="/channel/{{channelName}}">{{channel.title}}</a></li>
+    <div *ngIf="isChannelExist; then showChannelLink; else unknownChannel"></div>
+    <ng-template #showChannelLink>
+      <li><a routerLink="/channel/{{channelName}}">Channel</a></li>
+    </ng-template>
+    <ng-template #unknownChannel>
+      <li>Unknown channel</li>
+    </ng-template>
     <li>Message</li>
   </ul>
 </nav>
 
-<div *ngIf="!isChannelExist">
-  <p>Channel not found</p>
-</div>
+<section>
+  <div *ngIf="isChannelExist; then showChannel; else noChannel"></div>
+  <ng-template #showChannel>
 
-<div *ngIf="isChannelExist">
-  <div *ngIf="!isItemExist">
-    <p>Item not found</p>
-  </div>
-  <div *ngIf="isItemExist">
-    <h3 *ngIf="!isItemTitleExist">The item has no title</h3>
-    <h3 *ngIf="isItemTitleExist">{{channel.items[itemId].title}}</h3>
+    <div *ngIf="isItemExist; then showItem; else noItem"></div>
+    <ng-template #showItem>
+      <article *ngIf="isItemExist">
 
-    <p *ngIf="!isItemDescriptionExist">The item has no description</p>
-    <p *ngIf="isItemDescriptionExist">{{channel.items[itemId].description}}</p>
+        <div *ngIf="isItemTitleExist; then showItemTitle; else noItemTitle"></div>
+        <ng-template #showItemTitle>
+          <h2>{{channel.items[itemId].title}}</h2>
+        </ng-template>
+        <ng-template #noItemTitle>
+          <h3>The item has no title</h3>
+        </ng-template>
 
-    <div *ngIf="isItemLinkExist">
-      <a href="{{channel.items[itemId].link}}" target="blank">Read in source</a>
+        <div *ngIf="isItemDescriptionExist; then showItemDescription; else noItemDescription"></div>
+        <ng-template #showItemDescription>
+          <div>{{channel.items[itemId].description}}</div>
+        </ng-template>
+        <ng-template #noItemDescription>
+          <p>The item has no description</p>
+        </ng-template>
+
+        <div *ngIf="isItemLinkExist">
+          <a href="{{channel.items[itemId].link}}" target="blank">Read in source</a>
+        </div>
+
+      </article>
+    </ng-template>
+    <ng-template #noItem>
+      <div>
+        <p>Item not found</p>
+      </div>
+    </ng-template>
+  </ng-template>
+
+  <ng-template #noChannel>
+    <div>
+      <p>Channel not found</p>
     </div>
-  </div>
-</div>
+  </ng-template>
+
+</section>

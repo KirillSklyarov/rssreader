@@ -6,18 +6,29 @@
 <nav>
   <ul>
     <li><a routerLink="/">Home</a></li>
-    <li *ngIf="isChannelExist">{{channel.title}}</li>
+    <div *ngIf="isChannelExist; then showChannelTitle; else unknownChannel"></div>
+    <ng-template #showChannelTitle>
+      <li>Channel</li>
+    </ng-template>
+    <ng-template #unknownChannel>
+      <li>Unknown channel</li>
+    </ng-template>
   </ul>
 </nav>
 
-<div *ngIf="!isChannelExist">
-  <p>Channel not found</p>
-</div>
-
-<div *ngIf="isChannelExist">
-  <ul *ngIf="channel">
-    <li *ngFor="let item of channel.items; let i = index">
-      <a routerLink="message/{{i}}">{{item.title}}</a>
-    </li>
-  </ul>
-</div>
+<section>
+  <div *ngIf="isChannelExist; then thenTemplate; else elseTemplate"></div>
+  <ng-template #thenTemplate>
+    <header><h2>{{channel.title}}</h2></header>
+    <div>
+      <ul>
+        <li *ngFor="let item of channel.items; let i = index">
+          <a routerLink="message/{{i}}">{{item.title}}</a>
+        </li>
+      </ul>
+    </div>
+  </ng-template>
+  <ng-template #elseTemplate>
+    <div><p>Channel not found</p></div>
+  </ng-template>
+</section>
