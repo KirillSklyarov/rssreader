@@ -1,26 +1,24 @@
-<nav>
-  <md-nav-list>
+<md-nav-list>
 
-    <md-list-item *ngIf="navigationLevel === 0">Home</md-list-item>
-    <a *ngIf="navigationLevel > 0" md-list-item routerLink="/">Home</a>
+  <md-list-item *ngIf="navigationLevel === 0">Home</md-list-item>
+  <a *ngIf="navigationLevel > 0" md-list-item routerLink="/">Home</a>
 
-    <span *ngIf="navigationLevel > 0">
-      <span *ngIf="isChannelExist; then showChannelTab; else unknownChannel">
-      </span>
-      <ng-template #showChannelTab>
-        <md-list-item *ngIf="navigationLevel === 1">Channel</md-list-item>
-        <a *ngIf="navigationLevel > 1" md-list-item
-          routerLink="/channel/{{channelName}}">Channel</a>
-      </ng-template>
-      <ng-template #unknownChannel>
-        <md-list-item>Unknown channel</md-list-item>
-      </ng-template>
+  <span *ngIf="navigationLevel > 0">
+    <span *ngIf="isChannelExist; then showChannelTab; else unknownChannel">
     </span>
+    <ng-template #showChannelTab>
+      <md-list-item *ngIf="navigationLevel === 1">Channel</md-list-item>
+      <a *ngIf="navigationLevel > 1" md-list-item
+        routerLink="/channel/{{channelName}}">Channel</a>
+    </ng-template>
+    <ng-template #unknownChannel>
+      <md-list-item>Unknown channel</md-list-item>
+    </ng-template>
+  </span>
 
-    <span *ngIf="navigationLevel > 1">
-      <md-list-item *ngIf="isItemExist">Message</md-list-item>
-      <md-list-item *ngIf="!isItemExist">Unknown Message</md-list-item>
-    </span>
+  <span *ngIf="navigationLevel > 1">
+    <md-list-item *ngIf="isItemExist">Message</md-list-item>
+    <md-list-item *ngIf="!isItemExist">Unknown Message</md-list-item>
+  </span>
 
-  </md-nav-list>
-</nav>
+</md-nav-list>
