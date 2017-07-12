@@ -4,7 +4,7 @@
     routerLink="/">
     Home
   </a>
-  <a md-tab-link *ngIf="navigationLevel > 0"
+  <a md-tab-link *ngIf="(navigationLevel > 0)"
     [active]="true"
     routerLink="/channel/{{channelName}}">
     Channel
