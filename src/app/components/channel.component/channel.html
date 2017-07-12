@@ -15,13 +15,11 @@
   <div *ngIf="isChannelExist; then showChannelItems; else channelNotFound"></div>
   <ng-template #showChannelItems>
     <header><h2>{{channel.title}}</h2></header>
-    <div>
-      <ul>
-        <li *ngFor="let item of channel.items; let i = index">
-          <a routerLink="message/{{i}}">{{item.title}}</a>
-        </li>
-      </ul>
-    </div>
+      <md-nav-list>
+          <a md-list-item
+          *ngFor="let item of channel.items; let i = index"
+          routerLink="message/{{i}}">{{item.title}}</a>
+      </md-nav-list>
   </ng-template>
   <ng-template #channelNotFound>
     <div><p>Channel not found</p></div>
