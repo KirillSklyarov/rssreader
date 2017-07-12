@@ -14,11 +14,16 @@ import { HomeStatisticComponent } from './../components/home.component/home-stat
 import { ChannelStatisticComponent } from './../components/channel.component/channel-statistic.component';
 import { MessageStatisticComponent } from './../components/message.component/message-statistic.component';
 
+import { NavigationComponent } from './../components/navigation.component/navigation.component';
+
+import {MdListModule} from '@angular/material';
+
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'channel/:channelName', component: ChannelComponent },
   { path: 'channel/:channelName/message/:itemId', component: MessageComponent }
 ];
+
 
 @NgModule({
   declarations: [
@@ -28,12 +33,14 @@ const appRoutes: Routes = [
     MessageComponent,
     HomeStatisticComponent,
     ChannelStatisticComponent,
-    MessageStatisticComponent
+    MessageStatisticComponent,
+    NavigationComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     HttpModule,
+    MdListModule,
     RouterModule.forRoot(appRoutes)
   ],
   providers: [ChannelService],

@@ -3,22 +3,16 @@
   </channel-statistic>
 </div>
 
-<nav>
-  <ul>
-    <li><a routerLink="/">Home</a></li>
-    <div *ngIf="isChannelExist; then showChannelTitle; else unknownChannel"></div>
-    <ng-template #showChannelTitle>
-      <li>Channel</li>
-    </ng-template>
-    <ng-template #unknownChannel>
-      <li>Unknown channel</li>
-    </ng-template>
-  </ul>
+<nav *ngIf="isChannelExist">
+  <app-navigation
+    [isChannelExist]="isChannelExist"
+    [navigationLevel]="1">
+  </app-navigation>
 </nav>
 
 <section>
-  <div *ngIf="isChannelExist; then thenTemplate; else elseTemplate"></div>
-  <ng-template #thenTemplate>
+  <div *ngIf="isChannelExist; then showChannelItems; else channelNotFoung"></div>
+  <ng-template #showChannelItems>
     <header><h2>{{channel.title}}</h2></header>
     <div>
       <ul>
@@ -28,7 +22,7 @@
       </ul>
     </div>
   </ng-template>
-  <ng-template #elseTemplate>
+  <ng-template #channelNotFoung>
     <div><p>Channel not found</p></div>
   </ng-template>
 </section>

@@ -4,20 +4,15 @@
   channel.items[itemId].description : ''"></message-statistic>
 </div>
 
-
-<nav>
-  <ul>
-    <li><a routerLink="/">Home</a></li>
-    <div *ngIf="isChannelExist; then showChannelLink; else unknownChannel"></div>
-    <ng-template #showChannelLink>
-      <li><a routerLink="/channel/{{channelName}}">Channel</a></li>
-    </ng-template>
-    <ng-template #unknownChannel>
-      <li>Unknown channel</li>
-    </ng-template>
-    <li>Message</li>
-  </ul>
+<nav *ngIf="isChannelExist">
+  <app-navigation
+    [isChannelExist]="isChannelExist"
+    [isItemExist]="isItemExist"
+    [navigationLevel]="2"
+    [channelName]="channel.backendChannelInfo.name">
+  </app-navigation>
 </nav>
+
 
 <section>
   <div *ngIf="isChannelExist; then showChannel; else noChannel"></div>

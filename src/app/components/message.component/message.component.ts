@@ -19,12 +19,12 @@ import { BackendChannelInfo } from './../../libs/rss/backendchannelinfo';
 export class MessageComponent implements OnInit, OnDestroy {
 
   channelName: string;
-  private itemId: number;
+  itemId: number;
 
   channel: Channel;
 
-  private isChannelExist = false;
-  private isItemExist = false;
+  isChannelExist = false;
+  isItemExist = false;
   private isItemTitleExist = false;
   private isItemDescriptionExist = false;
   private isItemLinkExist = false;
