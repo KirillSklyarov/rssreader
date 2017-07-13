@@ -30,25 +30,24 @@
             <md-card-content>{{channel.items[itemId].description}}</md-card-content>
           </ng-template>
           <ng-template #noItemDescription>
-            <md-card-content><p>The item has no description</p></md-card-content>
+            <md-card-subtitle>The item has no description</md-card-subtitle>
           </ng-template>
 
           <div *ngIf="isItemLinkExist">
             <a md-button href="{{channel.items[itemId].link}}" target="blank">Read in source</a>
           </div>
-
         </md-card>
       </ng-template>
       <ng-template #noItem>
         <md-card>
-          <p>Item not found</p>
+          <md-card-content>Item not found</md-card-content>
         </md-card>
       </ng-template>
     </ng-template>
 
     <ng-template #noChannel>
       <md-card>
-        <p>Channel not found</p>
+        <md-card-subtitle>Channel not found</md-card-subtitle>
       </md-card>
     </ng-template>
 
