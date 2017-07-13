@@ -1,8 +1,3 @@
-<div *ngIf="isChannelExist" class="statistic">
-  <channel-statistic [currentChannel] = "channel">
-  </channel-statistic>
-</div>
-
 <nav>
   <app-navigation
     [navigationLevel] = "1"
@@ -11,17 +6,29 @@
   </app-navigation>
 </nav>
 
-<section>
-  <div *ngIf="isChannelExist; then showChannelItems; else channelNotFound"></div>
-  <ng-template #showChannelItems>
-    <header><h2>{{channel.title}}</h2></header>
-      <md-nav-list>
-          <a md-list-item
-          *ngFor="let item of channel.items; let i = index"
-          routerLink="message/{{i}}">{{item.title}}</a>
-      </md-nav-list>
-  </ng-template>
-  <ng-template #channelNotFound>
-    <div><p>Channel not found</p></div>
-  </ng-template>
-</section>
+<div class="naim-container">
+  <section  class="main-content">
+    <div *ngIf="isChannelExist; then showChannelItems; else channelNotFound"></div>
+    <ng-template #showChannelItems>
+      <md-card>
+        <md-card-title>{{channel.title}}</md-card-title>
+        <md-card-content>
+          <md-nav-list>
+              <a md-list-item
+              *ngFor="let item of channel.items; let i = index"
+              routerLink="message/{{i}}">{{item.title}}</a>
+          </md-nav-list>
+        </md-card-content>
+      </md-card>
+    </ng-template>
+    <ng-template #channelNotFound>
+      <md-card><md-card-subtitle>Channel not found</md-card-subtitle></md-card>
+    </ng-template>
+  </section>
+
+  <div *ngIf="isChannelExist" class="statistic">
+    <channel-statistic [currentChannel] = "channel">
+    </channel-statistic>
+  </div>
+</div>
+

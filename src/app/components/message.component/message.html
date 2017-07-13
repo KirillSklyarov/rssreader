@@ -1,9 +1,3 @@
-<div *ngIf="isChannelExist && isItemExist" class="statistic">
-  <message-statistic
-  [itemDescription] = "channel.items[itemId].description ?
-  channel.items[itemId].description : ''"></message-statistic>
-</div>
-
 <nav>
   <app-navigation
     [navigationLevel] = "2"
@@ -14,48 +8,55 @@
   </app-navigation>
 </nav>
 
+<div class="naim-container">
+  <section  class="main-content">
+    <div *ngIf="isChannelExist; then showChannel; else noChannel"></div>
+    <ng-template #showChannel>
 
-<section>
-  <div *ngIf="isChannelExist; then showChannel; else noChannel"></div>
-  <ng-template #showChannel>
+      <div *ngIf="isItemExist; then showItem; else noItem"></div>
+      <ng-template #showItem>
+        <md-card *ngIf="isItemExist">
 
-    <div *ngIf="isItemExist; then showItem; else noItem"></div>
-    <ng-template #showItem>
-      <article *ngIf="isItemExist">
+          <div *ngIf="isItemTitleExist; then showItemTitle; else noItemTitle"></div>
+          <ng-template #showItemTitle>
+            <md-card-title>{{channel.items[itemId].title}}</md-card-title>
+          </ng-template>
+          <ng-template #noItemTitle>
+            <md-card-subtitle>The item has no title</md-card-subtitle>
+          </ng-template>
 
-        <div *ngIf="isItemTitleExist; then showItemTitle; else noItemTitle"></div>
-        <ng-template #showItemTitle>
-          <h2>{{channel.items[itemId].title}}</h2>
-        </ng-template>
-        <ng-template #noItemTitle>
-          <h3>The item has no title</h3>
-        </ng-template>
+          <div *ngIf="isItemDescriptionExist; then showItemDescription; else noItemDescription"></div>
+          <ng-template #showItemDescription>
+            <md-card-content>{{channel.items[itemId].description}}</md-card-content>
+          </ng-template>
+          <ng-template #noItemDescription>
+            <md-card-content><p>The item has no description</p></md-card-content>
+          </ng-template>
 
-        <div *ngIf="isItemDescriptionExist; then showItemDescription; else noItemDescription"></div>
-        <ng-template #showItemDescription>
-          <div>{{channel.items[itemId].description}}</div>
-        </ng-template>
-        <ng-template #noItemDescription>
-          <p>The item has no description</p>
-        </ng-template>
+          <div *ngIf="isItemLinkExist">
+            <a md-button href="{{channel.items[itemId].link}}" target="blank">Read in source</a>
+          </div>
 
-        <div *ngIf="isItemLinkExist">
-          <a href="{{channel.items[itemId].link}}" target="blank">Read in source</a>
-        </div>
-
-      </article>
+        </md-card>
+      </ng-template>
+      <ng-template #noItem>
+        <md-card>
+          <p>Item not found</p>
+        </md-card>
+      </ng-template>
     </ng-template>
-    <ng-template #noItem>
-      <div>
-        <p>Item not found</p>
-      </div>
+
+    <ng-template #noChannel>
+      <md-card>
+        <p>Channel not found</p>
+      </md-card>
     </ng-template>
-  </ng-template>
 
-  <ng-template #noChannel>
-    <div>
-      <p>Channel not found</p>
-    </div>
-  </ng-template>
+  </section>
 
-</section>
+  <div *ngIf="isChannelExist && isItemExist" class="statistic">
+    <message-statistic
+    [itemDescription] = "channel.items[itemId].description ?
+    channel.items[itemId].description : ''"></message-statistic>
+  </div>
+</div>

@@ -1,27 +1,31 @@
-<div *ngIf="areChannelsLoaded" class="statistic">
-  <home-statistic [allChannels] = "allChannels">
-  </home-statistic>
-</div>
-
 <nav><app-navigation [navigationLevel] = "0"></app-navigation></nav>
 
-<section>
-  <header><h2>List of channels</h2></header>
+<div class="naim-container">
+  <section class="main-content">
+    <md-card>
+      <md-card-title>List of channels</md-card-title>
 
-  <div *ngIf="areChannelsLoaded; then showChannelList; else emptyChannelList"></div>
-  <ng-template #showChannelList>
-    <div>
-      <md-nav-list>
-        <a md-list-item
-        *ngFor="let channel of allChannels; let i = index"
-        routerLink="channel/{{channel.backendChannelInfo.name}}">
-          {{channel.title}}
-        </a>
+      <div *ngIf="areChannelsLoaded; then showChannelList; else emptyChannelList"></div>
+      <ng-template #showChannelList>
+        <md-card-content>
+          <md-nav-list>
+            <a md-list-item
+            *ngFor="let channel of allChannels; let i = index"
+            routerLink="channel/{{channel.backendChannelInfo.name}}">
+              {{channel.title}}
+            </a>
 
-      </md-nav-list>
-    </div>
-  </ng-template>
-  <ng-template #emptyChannelList>
-    <div><p>List is empty</p></div>
-  </ng-template>
-</section>
+          </md-nav-list>
+        </md-card-content>
+      </ng-template>
+      <ng-template #emptyChannelList>
+        <md-card-subtitle>List is empty</md-card-subtitle>
+      </ng-template>
+    </md-card>
+  </section>
+
+  <div *ngIf="areChannelsLoaded" class="statistic">
+    <home-statistic [allChannels] = "allChannels">
+    </home-statistic>
+  </div>
+</div>

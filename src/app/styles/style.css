@@ -1,4 +1,14 @@
+.main-container {
+  display: inline-block
+}
+
+
+.main-content {
+  display: block;
+  width: 70%;
+}
+
 .statistic {
-  float: right;
-  width: 35%;
+  display: block;
+  width: 20%;
 }
