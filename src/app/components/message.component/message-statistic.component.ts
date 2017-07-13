@@ -21,7 +21,6 @@ export class MessageStatisticComponent implements OnInit {
   allLatinCharsLength: number;
   quantityOfChars: QuantityOfChars[] = []
 
-  // Test data
   pieChartData: any = {
     chartType: 'PieChart',
     dataTable: [

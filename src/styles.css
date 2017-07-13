@@ -2,12 +2,14 @@
 @import '~@angular/material/prebuilt-themes/indigo-pink.css';
 
 .main-content {
-  width: 65%;
+  width: 59%;
+  margin: 2%;
 }
 
 .statistic {
   float: right;
   width: 35%;
+  margin: 0% 2% 2% 2%;
 }
 
 td {
