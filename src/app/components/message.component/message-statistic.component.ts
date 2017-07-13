@@ -22,17 +22,12 @@ export class MessageStatisticComponent implements OnInit {
   quantityOfChars: QuantityOfChars[] = []
 
   // Test data
-  pieChartData =  {
+  pieChartData: any = {
     chartType: 'PieChart',
     dataTable: [
-      ['Task', 'Hours per Day'],
-      ['Work',     11],
-      ['Eat',      2],
-      ['Commute',  2],
-      ['Watch TV', 2],
-      ['Sleep',    7]
+      ['Character', 'Hours per Day']
     ],
-    options: {'title': 'Tasks'},
+    options: {'title': 'Latin characters'},
   };
 
   constructor () { }
@@ -60,6 +55,10 @@ export class MessageStatisticComponent implements OnInit {
           }
         }
       }
+      this.quantityOfChars.forEach(quantityOfChar => {
+        this.pieChartData.dataTable.push([quantityOfChar.char,
+          quantityOfChar.quantity]);
+      });
     }
   }
 }
