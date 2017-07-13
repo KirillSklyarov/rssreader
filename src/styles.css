@@ -9,3 +9,7 @@
   float: right;
   width: 25%;
 }
+
+td {
+  text-align: left;
+}

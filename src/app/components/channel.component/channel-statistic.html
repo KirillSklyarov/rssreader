@@ -2,7 +2,17 @@
   <md-card-title>Statistic</md-card-title>
 
   <md-card-content>
-    <p>Number of messages: {{currentChannel.items.length}}</p>
-    <p>Number of authors: {{numberOfAuthors}}</p>
+    <table>
+      <tbody>
+        <tr>
+          <td>Number of messages</td>
+          <td>{{currentChannel.items.length}}</td>
+        </tr>
+        <tr>
+          <td>Number of authors</td>
+          <td>{{numberOfAuthors}}</td>
+        </tr>
+      </tbody>
+    </table>
   </md-card-content>
 </md-card>
