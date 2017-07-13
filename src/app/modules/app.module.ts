@@ -24,6 +24,8 @@ import {
   MdTableModule
   } from '@angular/material';
 
+  import { Ng2GoogleChartsModule } from 'ng2-google-charts';
+
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'channel/:channelName', component: ChannelComponent },
@@ -51,6 +53,7 @@ const appRoutes: Routes = [
     MdCardModule,
     MdButtonModule,
     MdTableModule,
+    Ng2GoogleChartsModule,
     RouterModule.forRoot(appRoutes)
   ],
   providers: [ChannelService],

@@ -24,6 +24,7 @@
     "@angular/platform-browser-dynamic": "^4.2.6",
     "@angular/router": "^4.2.6",
     "core-js": "^2.4.1",
+    "ng2-google-charts": "^3.0.0",
     "rss-parser": "^2.10.0",
     "rss-to-json": "^1.0.2",
     "rxjs": "^5.0.1",
