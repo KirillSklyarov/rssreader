@@ -9,6 +9,12 @@
 </nav>
 
 <div class="naim-container">
+  <aside *ngIf="isChannelExist && isItemExist" class="statistic">
+    <message-statistic
+    [itemDescription] = "channel.items[itemId].description ?
+    channel.items[itemId].description : ''"></message-statistic>
+  </aside>
+
   <section  class="main-content">
     <div *ngIf="isChannelExist; then showChannel; else noChannel"></div>
     <ng-template #showChannel>
@@ -50,12 +56,5 @@
         <md-card-subtitle>Channel not found</md-card-subtitle>
       </md-card>
     </ng-template>
-
   </section>
-
-  <aside *ngIf="isChannelExist && isItemExist" class="statistic">
-    <message-statistic
-    [itemDescription] = "channel.items[itemId].description ?
-    channel.items[itemId].description : ''"></message-statistic>
-  </aside>
 </div>

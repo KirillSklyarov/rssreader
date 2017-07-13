@@ -7,6 +7,11 @@
 </nav>
 
 <div class="naim-container">
+  <aside *ngIf="isChannelExist" class="statistic">
+    <channel-statistic [currentChannel] = "channel">
+    </channel-statistic>
+  </aside>
+
   <section  class="main-content">
     <div *ngIf="isChannelExist; then showChannelItems; else channelNotFound"></div>
     <ng-template #showChannelItems>
@@ -25,10 +30,5 @@
       <md-card><md-card-subtitle>Channel not found</md-card-subtitle></md-card>
     </ng-template>
   </section>
-
-  <aside *ngIf="isChannelExist" class="statistic">
-    <channel-statistic [currentChannel] = "channel">
-    </channel-statistic>
-  </aside>
 </div>
 
