@@ -1,30 +1,28 @@
-<aside>
-  <md-card>
-    <md-card-title>Statistic</md-card-title>
+<md-card>
+  <md-card-title>Statistic</md-card-title>
 
-    <div *ngIf="allLatinChars; then showLatinChars; else noLatinChars"></div>
-    <ng-template #showLatinChars>
-        <md-card-title>Latin characters</md-card-title>
-        <md-card-content>
-          <table>
-            <thead>
-              <tr>
-                <th>Char</th>
-                <th>%</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let quantityOfChar of quantityOfChars">
-                <td>{{quantityOfChar.char}}</td>
-                <td>{{(quantityOfChar.quantity/allLatinCharsLength*100).toFixed(1)}}</td>
-              </tr>
-            </tbody>
-          </table>
-        </md-card-content>
-    </ng-template>
-    <ng-template #noLatinChars>
-      <md-card-subtitle>The message has no latin characters
-      </md-card-subtitle>
-    </ng-template>
-  </md-card>
-</aside>
+  <div *ngIf="allLatinChars; then showLatinChars; else noLatinChars"></div>
+  <ng-template #showLatinChars>
+      <md-card-title>Latin characters</md-card-title>
+      <md-card-content>
+        <table>
+          <thead>
+            <tr>
+              <th>Char</th>
+              <th>%</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let quantityOfChar of quantityOfChars">
+              <td>{{quantityOfChar.char}}</td>
+              <td>{{(quantityOfChar.quantity/allLatinCharsLength*100).toFixed(1)}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </md-card-content>
+  </ng-template>
+  <ng-template #noLatinChars>
+    <md-card-subtitle>The message has no latin characters
+    </md-card-subtitle>
+  </ng-template>
+</md-card>

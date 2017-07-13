@@ -1,10 +1,9 @@
 <nav><app-navigation [navigationLevel] = "0"></app-navigation></nav>
 
-<div class="naim-container">
+<div class="main-container">
   <section class="main-content">
     <md-card>
       <md-card-title>List of channels</md-card-title>
-
       <div *ngIf="areChannelsLoaded; then showChannelList; else emptyChannelList"></div>
       <ng-template #showChannelList>
         <md-card-content>
@@ -23,8 +22,8 @@
     </md-card>
   </section>
 
-  <div *ngIf="areChannelsLoaded" class="statistic">
+  <aside *ngIf="areChannelsLoaded" class="statistic">
     <home-statistic [allChannels] = "allChannels">
     </home-statistic>
-  </div>
+  </aside>
 </div>

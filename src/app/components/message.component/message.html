@@ -53,9 +53,9 @@
 
   </section>
 
-  <div *ngIf="isChannelExist && isItemExist" class="statistic">
+  <aside *ngIf="isChannelExist && isItemExist" class="statistic">
     <message-statistic
     [itemDescription] = "channel.items[itemId].description ?
     channel.items[itemId].description : ''"></message-statistic>
-  </div>
+  </aside>
 </div>
